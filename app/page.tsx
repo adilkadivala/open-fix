@@ -180,7 +180,7 @@ export default function TaskFlowLanding() {
               {/* Mock Dashboard Content */}
               <div className="flex h-[400px] md:h-[600px] bg-white">
                 {/* Sidebar */}
-                <div className="w-16 md:w-64 border-r border-slate-100 p-4 flex flex-col gap-6 hidden sm:flex">
+                <div className="w-16 md:w-64 border-r border-slate-100 p-4 flex-col gap-6 hidden sm:flex">
                   <div className="space-y-1">
                     <div className="h-8 rounded-md bg-slate-100 w-full animate-pulse"></div>
                     <div className="h-8 rounded-md bg-white w-full"></div>

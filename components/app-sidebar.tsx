@@ -1,12 +1,10 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 
-
-import { NavDocuments } from "@/components/nav-documents"
-import { NavMain } from "@/components/nav-main"
-import { NavSecondary } from "@/components/nav-secondary"
-import { NavUser } from "@/components/nav-user"
+import { NavMain } from "@/components/nav-main";
+import { NavSecondary } from "@/components/nav-secondary";
+import { NavUser } from "@/components/nav-user";
 import {
   Sidebar,
   SidebarContent,
@@ -15,8 +13,15 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
-import { Camera, ChartBar, Database, File, Folder, HelpCircle, LayoutDashboard, List, RepeatIcon, Search, Settings, Users } from "lucide-react"
+} from "@/components/ui/sidebar";
+import {
+  GitPullRequest,
+  HelpCircle,
+  Home,
+  PlugZap,
+  Settings,
+  Square,
+} from "lucide-react";
 
 const data = {
   user: {
@@ -26,79 +31,22 @@ const data = {
   },
   navMain: [
     {
-      title: "Dashboard",
+      title: "Overview",
       url: "#",
-      icon: LayoutDashboard,
+      icon: Home,
     },
     {
-      title: "Lifecycle",
+      title: "Issues",
       url: "#",
-      icon: List,
+      icon: GitPullRequest,
     },
     {
-      title: "Analytics",
+      title: "Integrations",
       url: "#",
-      icon: ChartBar,
-    },
-    {
-      title: "Projects",
-      url: "#",
-      icon: Folder,
-    },
-    {
-      title: "Team",
-      url: "#",
-      icon: Users,
+      icon: PlugZap,
     },
   ],
-  navClouds: [
-    {
-      title: "Capture",
-      icon: Camera,
-      isActive: true,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Proposal",
-      icon: File,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Prompts",
-      icon: File,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-  ],
+
   navSecondary: [
     {
       title: "Settings",
@@ -110,30 +58,8 @@ const data = {
       url: "#",
       icon: HelpCircle,
     },
-    {
-      title: "Search",
-      url: "#",
-      icon: Search,
-    },
   ],
-  documents: [
-    {
-      name: "Data Library",
-      url: "#",
-      icon: Database,
-    },
-    {
-      name: "Reports",
-      url: "#",
-      icon: RepeatIcon,
-    },
-    {
-      name: "Word Assistant",
-      url: "#",
-      icon: File,
-    },
-  ],
-}
+};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -145,19 +71,21 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               asChild
               className="data-[slot=sidebar-menu-button]:p-1.5!"
             >
-      
+              <a href="#">
+                <Square className="size-5!" />
+                <span className="text-base font-semibold">Acme Inc.</span>
+              </a>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavDocuments items={data.documents} />
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />
       </SidebarFooter>
     </Sidebar>
-  )
+  );
 }
