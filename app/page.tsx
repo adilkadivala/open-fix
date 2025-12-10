@@ -25,6 +25,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import Link from "next/link";
 
 // --- Main Page Component ---
 
@@ -81,8 +82,8 @@ export default function TaskFlowLanding() {
           </nav>
 
           <div className="hidden md:flex items-center gap-4">
-            <Button variant="ghost" size="sm">
-              Log in
+            <Button variant="ghost" size="sm" asChild>
+              <Link href="/auth/sign-in">Log in</Link>
             </Button>
             <Button size="sm">Get Started</Button>
           </div>
