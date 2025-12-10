@@ -1,5 +1,6 @@
 "use client"
 
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -7,8 +8,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import type {  LucideIcon } from "lucide-react"
-
 import {
   SidebarGroup,
   SidebarGroupLabel,
@@ -18,7 +17,8 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
-import { EllipsisVertical, Folder, Share, Trash } from "lucide-react"
+import  { EllipsisVertical, EllipsisVerticalIcon, Folder, Share, Trash } from "lucide-react"
+import type { LucideIcon } from "lucide-react"
 
 export function NavDocuments({
   items,
@@ -49,7 +49,7 @@ export function NavDocuments({
                   showOnHover
                   className="data-[state=open]:bg-accent rounded-sm"
                 >
-                  <EllipsisVertical />
+                  <EllipsisVerticalIcon />
                   <span className="sr-only">More</span>
                 </SidebarMenuAction>
               </DropdownMenuTrigger>
