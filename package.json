@@ -4,9 +4,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "preinstall": "pnpm run db:generate",
+    "preinstall": "npx prisma generate",
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "eslint",
     "db:generate": "npx prisma generate",
@@ -15,8 +15,10 @@
     "db:studio": "npx prisma studio"
   },
   "dependencies": {
+    "@octokit/rest": "^22.0.1",
     "@prisma/adapter-pg": "^7.1.0",
     "@prisma/client": "^7.1.0",
+    "@prisma/client-runtime-utils": "7.1.0",
     "@radix-ui/react-avatar": "^1.1.11",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-dropdown-menu": "^2.1.16",

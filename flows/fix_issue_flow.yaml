@@ -1,0 +1,38 @@
+id: fix_issue_flow
+namespace: openfix
+
+inputs:
+  - name: agentRunId
+    type: STRING
+
+tasks:
+  - id: fetchIssue
+    type: http
+    uri: "https://your-app.com/api/agent/fetch-issue"
+    method: POST
+    body:
+      agentRunId: "{{ inputs.agentRunId }}"
+
+  - id: runCline
+    type: http
+    uri: "https://your-app.com/api/agent/cline"
+    method: POST
+    body:
+      agentRunId: "{{ inputs.agentRunId }}"
+      issue: "{{ tasks.fetchIssue.output.issue }}"
+      repoUrl: "{{ tasks.fetchIssue.output.repoUrl }}"
+
+  - id: evaluatePatch
+    type: http
+    uri: "https://your-app.com/api/agent/evaluate"
+    method: POST
+    body:
+      agentRunId: "{{ inputs.agentRunId }}"
+      patch: "{{ tasks.runCline.output.patch }}"
+
+  - id: finalize
+    type: http
+    uri: "https://your-app.com/api/agent/finalize"
+    method: POST
+    body:
+      agentRunId: "{{ inputs.agentRunId }}"

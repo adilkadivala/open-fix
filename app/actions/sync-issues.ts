@@ -9,7 +9,7 @@ export async function syncIssues(projectId: string) {
   const token = (session as any)?.access_token;
   if (!token) return null;
 
-  const project = await prisma.project.findUnique({
+  const project = await prisma.repos.findUnique({
     where: { id: projectId },
   });
 
@@ -20,7 +20,7 @@ export async function syncIssues(projectId: string) {
     { headers: { Authorization: `Bearer ${token}` } }
   );
 
-  const issues = await response.json();
+  const issues = (await response.json()).filter((i: any) => !i.pull_request);
 
   for (const issue of issues) {
     await prisma.issue.upsert({

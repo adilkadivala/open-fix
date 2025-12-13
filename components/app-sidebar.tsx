@@ -14,11 +14,9 @@ import {
 import {
   Folder,
   GitPullRequest,
-  HelpCircle,
   Home,
   PlugZap,
-  Settings,
-  Square,
+  Workflow,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -26,36 +24,23 @@ const data = {
   navMain: [
     {
       title: "Dashboard",
-      url: "/",
+      url: "/dashboard",
       icon: Home,
     },
     {
       title: "Repos",
-      url: "/dashboard/repos",
+      url: "/repos",
       icon: Folder,
     },
     {
-      title: "Issues",
-      url: "/issues",
+      title: "Projects",
+      url: "/projects",
       icon: GitPullRequest,
     },
     {
       title: "Integrations",
       url: "#",
       icon: PlugZap,
-    },
-  ],
-
-  navSecondary: [
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings,
-    },
-    {
-      title: "Get Help",
-      url: "#",
-      icon: HelpCircle,
     },
   ],
 };
@@ -70,9 +55,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               asChild
               className="data-[slot=sidebar-menu-button]:p-1.5!"
             >
-              <Link href="#">
-                <Square className="size-5!" />
-                <span className="text-base font-semibold">Acme Inc.</span>
+              <Link href="/">
+                <Workflow className="size-5!" />
+                <span className="text-base font-semibold">OpenFix.</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>

@@ -1,0 +1,36 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: kestra_postgres
+    environment:
+      POSTGRES_USER: kestra
+      POSTGRES_PASSWORD: kestra
+      POSTGRES_DB: kestra
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  kestra:
+    image: kestra/kestra:latest
+    container_name: kestra_server
+    depends_on:
+      - postgres
+    command: server local
+    ports:
+      - "8080:8080"
+    environment:
+      KESTRA_DATABASE_TYPE: postgres
+      KESTRA_DATABASE_POSTGRES_URL: jdbc:postgresql://postgres:5432/kestra
+      KESTRA_DATABASE_POSTGRES_USERNAME: kestra
+      KESTRA_DATABASE_POSTGRES_PASSWORD: kestra
+
+      KESTRA_AUTH_IDENTITY_PROVIDERS_BASIC_ENABLED: "true"
+      KESTRA_AUTH_IDENTITY_PROVIDERS_BASIC_USERNAME: admin@kestra.io
+      KESTRA_AUTH_IDENTITY_PROVIDERS_BASIC_PASSWORD: Admin1234
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+volumes:
+  pgdata:

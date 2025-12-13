@@ -14,7 +14,7 @@ export async function createProject(repo: any) {
 
   if (!user) return null;
 
-  const project = await prisma.project.create({
+  const project = await prisma.repos.create({
     data: {
       name: repo.name,
       repoOwner: repo.owner.login,

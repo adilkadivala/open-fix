@@ -1,0 +1,59 @@
+id: fix_issue_flow
+namespace: openfix
+
+inputs:
+  - name: agentRunId
+    type: STRING
+  - name: repoUrl
+    type: STRING
+  - name: issueTitle
+    type: STRING
+  - name: issueBody
+    type: STRING
+
+tasks:
+  - id: log_start
+    type: io.kestra.plugin.core.log.Log
+    message: |
+      🚀 Starting AI Agent
+      Repo: {{ inputs.repoUrl }}
+      Issue: {{ inputs.issueTitle }}
+
+  - id: run_cline
+    type: io.kestra.plugin.docker.Run
+    image: node:20
+    volumes:
+      - /tmp:/tmp
+    commands:
+      - npm install -g cline
+      - rm -rf /tmp/repo
+      - git clone "{{ inputs.repoUrl }}" /tmp/repo
+      - |
+          cline run \
+            --repo /tmp/repo \
+            --task "{{ inputs.issueTitle }} {{ inputs.issueBody }}"
+  - id: notify_backend_success
+    type: io.kestra.plugin.core.http.Request
+    uri: http://host.docker.internal:3000/api/agent/cline
+    method: POST
+    headers:
+      Content-Type: application/json
+    body: |
+      {
+        "agentRunId": "{{ inputs.agentRunId }}",
+        "status": "success"
+      }
+
+errors:
+  - id: notify_backend_failure
+    type: io.kestra.plugin.core.http.Request
+    uri: http://host.docker.internal:3000/api/agent/cline
+    method: POST
+    headers:
+      Content-Type: application/json
+    body: |
+      {
+        "agentRunId": "{{ inputs.agentRunId }}",
+        "status": "failed",
+        "error": "{{ error.message }}"
+      }

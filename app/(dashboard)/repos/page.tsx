@@ -38,7 +38,7 @@ export default function ReposPage() {
           <p className="text-sm text-neutral-500">{repo.description}</p>
 
           <Button
-            className="mt-3"
+            className="mt-3 cursor-pointer"
             onClick={() => addProject(repo)}
           >
             Add to Projects
