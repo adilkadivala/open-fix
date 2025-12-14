@@ -13,7 +13,6 @@ import {
   Github,
   Twitter,
   Command,
-  ChevronRight,
   Check,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -26,12 +25,12 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Link from "next/link";
-
-// --- Main Page Component ---
+import { useSession } from "next-auth/react";
 
 export default function TaskFlowLanding() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { data: session, status } = useSession();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,6 +40,9 @@ export default function TaskFlowLanding() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Check if user is authenticated
+  const isAuthenticated = status === "authenticated";
+
   return (
     <div className="min-h-screen bg-white font-sans text-slate-950 selection:bg-slate-100">
       {/* Navigation */}
@@ -48,7 +50,7 @@ export default function TaskFlowLanding() {
         className={cn(
           "fixed top-0 w-full z-50 border-b border-transparent transition-all duration-300",
           scrolled &&
-            "bg-white/80 backdrop-blur-md border-slate-200 upports-backdrop-filter:bg-white/60"
+            "bg-white/80 backdrop-blur-md border-slate-200 supports-backdrop-filter:bg-white/60"
         )}
       >
         <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
@@ -56,7 +58,7 @@ export default function TaskFlowLanding() {
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-950 text-white">
               <Command className="h-5 w-5" />
             </div>
-            TaskFlow
+            OpenFix.AI
           </div>
 
           {/* Desktop Nav */}
@@ -68,24 +70,33 @@ export default function TaskFlowLanding() {
               Features
             </a>
             <a
-              href="#testimonials"
+              href="#how-it-works"
               className="hover:text-slate-950 transition-colors"
             >
-              Testimonials
-            </a>
-            <a
-              href="#pricing"
-              className="hover:text-slate-950 transition-colors"
-            >
-              Pricing
+              How It Works
             </a>
           </nav>
 
           <div className="hidden md:flex items-center gap-4">
-            <Button variant="ghost" size="sm" asChild>
-              <Link href="/auth/sign-in">Log in</Link>
-            </Button>
-            <Button size="sm">Get Started</Button>
+            {isAuthenticated ? (
+              <>
+                <span className="text-sm text-slate-600">
+                  {session?.user?.name}
+                </span>
+                <Button size="sm" asChild>
+                  <Link href="/dashboard">Go to Dashboard</Link>
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button variant="ghost" size="sm" asChild>
+                  <Link href="/auth/sign-in">Log in</Link>
+                </Button>
+                <Button size="sm" asChild>
+                  <Link href="/auth/sign-in">Get Started</Link>
+                </Button>
+              </>
+            )}
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -112,22 +123,30 @@ export default function TaskFlowLanding() {
                 Features
               </a>
               <a
-                href="#testimonials"
+                href="#how-it-works"
                 className="block px-2 py-1 hover:text-slate-950"
               >
-                Testimonials
-              </a>
-              <a
-                href="#pricing"
-                className="block px-2 py-1 hover:text-slate-950"
-              >
-                Pricing
+                How It Works
               </a>
               <div className="flex flex-col gap-2 pt-4 border-t border-slate-100">
-                <Button variant="outline" className="w-full justify-center">
-                  Log in
-                </Button>
-                <Button className="w-full justify-center">Get Started</Button>
+                {isAuthenticated ? (
+                  <Button className="w-full justify-center" asChild>
+                    <Link href="/dashboard">Go to Dashboard</Link>
+                  </Button>
+                ) : (
+                  <>
+                    <Button
+                      variant="outline"
+                      className="w-full justify-center"
+                      asChild
+                    >
+                      <Link href="/auth/sign-in">Log in</Link>
+                    </Button>
+                    <Button className="w-full justify-center" asChild>
+                      <Link href="/auth/sign-in">Get Started</Link>
+                    </Button>
+                  </>
+                )}
               </div>
             </nav>
           </div>
@@ -142,116 +161,43 @@ export default function TaskFlowLanding() {
             className="px-3 py-1 text-sm rounded-full animate-in fade-in zoom-in duration-500"
           >
             <span className="mr-1 inline-block h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
-            v1.0 is now live
+            Powered by AI
           </Badge>
 
           <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl max-w-3xl mx-auto animate-in slide-in-from-bottom-4 duration-700 fade-in">
-            Manage your tasks <br className="hidden sm:inline" />
-            <span className="text-slate-500">with absolute clarity.</span>
+            Fix GitHub Issues <br className="hidden sm:inline" />
+            <span className="text-slate-500">Automatically with AI.</span>
           </h1>
 
           <p className="max-w-2xl leading-normal text-slate-500 sm:text-xl sm:leading-8 animate-in slide-in-from-bottom-5 duration-700 fade-in delay-150">
-            Taskflow is a task management dashboard designed to streamline your
-            workflow and boost productivity. Organize tasks, track progress, and
-            meet deadlines with ease.
+            OpenFix.AI uses Kestra, Cline, and powerful LLMs to understand your
+            codebase, analyze issues, and generate step-by-step fix plans with
+            automated PRs.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto animate-in slide-in-from-bottom-6 duration-700 fade-in delay-300">
-            <Button size="lg" className="h-12 px-8 text-base gap-2">
-              Get Started for Free <ArrowRight className="h-4 w-4" />
-            </Button>
-            <Button variant="outline" size="lg" className="h-12 px-8 text-base">
-              View Demo
-            </Button>
-          </div>
-
-          {/* Hero Image / Dashboard Mockup */}
-          <div className="relative w-full max-w-5xl mt-16 p-2 rounded-xl bg-slate-900/5 ring-1 ring-inset ring-slate-900/10 lg:rounded-2xl lg:p-4 animate-in slide-in-from-bottom-8 duration-1000 fade-in delay-500">
-            <div className="rounded-lg bg-white shadow-2xl overflow-hidden border border-slate-200">
-              {/* Mock Window Header */}
-              <div className="flex items-center gap-2 px-4 py-3 border-b border-slate-100 bg-slate-50">
-                <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                  <div className="w-3 h-3 rounded-full bg-amber-400"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                </div>
-                <div className="mx-auto w-1/3 h-5 rounded-md bg-white border border-slate-200"></div>
-              </div>
-
-              {/* Mock Dashboard Content */}
-              <div className="flex h-[400px] md:h-[600px] bg-white">
-                {/* Sidebar */}
-                <div className="w-16 md:w-64 border-r border-slate-100 p-4 flex-col gap-6 hidden sm:flex">
-                  <div className="space-y-1">
-                    <div className="h-8 rounded-md bg-slate-100 w-full animate-pulse"></div>
-                    <div className="h-8 rounded-md bg-white w-full"></div>
-                    <div className="h-8 rounded-md bg-white w-full"></div>
-                  </div>
-                  <div className="space-y-1 mt-auto">
-                    <div className="h-8 rounded-md bg-white w-full"></div>
-                  </div>
-                </div>
-
-                {/* Main Area */}
-                <div className="flex-1 p-6 md:p-8 bg-slate-50/50">
-                  <div className="flex justify-between items-center mb-8">
-                    <div className="h-8 w-48 bg-slate-200 rounded-md"></div>
-                    <div className="h-8 w-24 bg-slate-900 rounded-md"></div>
-                  </div>
-
-                  {/* Kanban Columns */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {/* Column 1 */}
-                    <div className="space-y-4">
-                      <div className="h-4 w-24 bg-slate-200 rounded"></div>
-                      <div className="p-4 bg-white rounded-lg border border-slate-200 shadow-sm space-y-3">
-                        <div className="h-4 w-3/4 bg-slate-100 rounded"></div>
-                        <div className="h-16 w-full bg-slate-50 rounded"></div>
-                        <div className="flex justify-between">
-                          <div className="h-4 w-8 bg-slate-100 rounded"></div>
-                          <div className="h-6 w-6 rounded-full bg-blue-100"></div>
-                        </div>
-                      </div>
-                      <div className="p-4 bg-white rounded-lg border border-slate-200 shadow-sm space-y-3 opacity-75">
-                        <div className="h-4 w-1/2 bg-slate-100 rounded"></div>
-                        <div className="h-12 w-full bg-slate-50 rounded"></div>
-                      </div>
-                    </div>
-
-                    {/* Column 2 */}
-                    <div className="space-y-4 hidden md:block">
-                      <div className="h-4 w-24 bg-slate-200 rounded"></div>
-                      <div className="p-4 bg-white rounded-lg border border-slate-200 shadow-sm space-y-3">
-                        <div className="h-4 w-2/3 bg-slate-100 rounded"></div>
-                        <div className="h-20 w-full bg-slate-50 rounded"></div>
-                        <div className="flex justify-between">
-                          <div className="h-4 w-12 bg-red-50 rounded text-[10px] text-red-500 flex items-center px-1">
-                            Urgent
-                          </div>
-                          <div className="h-6 w-6 rounded-full bg-purple-100"></div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Column 3 */}
-                    <div className="space-y-4 hidden lg:block">
-                      <div className="h-4 w-24 bg-slate-200 rounded"></div>
-                      <div className="p-4 bg-white rounded-lg border border-slate-200 shadow-sm space-y-3">
-                        <div className="h-4 w-1/2 bg-slate-100 rounded"></div>
-                        <div className="flex -space-x-2">
-                          <div className="h-6 w-6 rounded-full bg-slate-200 ring-2 ring-white"></div>
-                          <div className="h-6 w-6 rounded-full bg-slate-300 ring-2 ring-white"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Decoration Gradients */}
-            <div className="absolute -top-12 -left-12 h-[300px] w-[300px] bg-purple-500/20 blur-[100px] rounded-full mix-blend-multiply"></div>
-            <div className="absolute -bottom-12 -right-12 h-[300px] w-[300px] bg-blue-500/20 blur-[100px] rounded-full mix-blend-multiply"></div>
+            {isAuthenticated ? (
+              <Button size="lg" className="h-12 px-8 text-base gap-2" asChild>
+                <Link href="/dashboard">
+                  Go to Dashboard <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Button>
+            ) : (
+              <>
+                <Button size="lg" className="h-12 px-8 text-base gap-2" asChild>
+                  <Link href="/auth/sign-in">
+                    Get Started for Free <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="h-12 px-8 text-base"
+                >
+                  View Demo
+                </Button>
+              </>
+            )}
           </div>
         </section>
 
@@ -262,11 +208,11 @@ export default function TaskFlowLanding() {
         >
           <div className="text-center space-y-4 max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-              Everything you need to ship projects
+              Everything you need to fix issues faster
             </h2>
             <p className="mx-auto max-w-[700px] text-slate-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              TaskFlow provides all the tools you need to manage projects,
-              collaborate with your team, and stay on track.
+              OpenFix.AI provides intelligent code analysis, automated fix
+              generation, and seamless GitHub integration.
             </p>
           </div>
 
@@ -274,38 +220,25 @@ export default function TaskFlowLanding() {
             <Card className="border-slate-200 shadow-sm hover:shadow-md transition-all duration-200">
               <CardHeader>
                 <div className="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center mb-4 text-slate-900">
+                  <Github className="h-6 w-6" />
+                </div>
+                <CardTitle>GitHub Integration</CardTitle>
+                <CardDescription>
+                  Connect your repositories with OAuth. Automatically sync
+                  issues and create PRs with AI-generated fixes.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="border-slate-200 shadow-sm hover:shadow-md transition-all duration-200">
+              <CardHeader>
+                <div className="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center mb-4 text-slate-900">
                   <Layout className="h-6 w-6" />
                 </div>
-                <CardTitle>Kanban Boards</CardTitle>
+                <CardTitle>Repo Indexing</CardTitle>
                 <CardDescription>
-                  Visualize your workflow with flexible Kanban boards. Drag and
-                  drop tasks to update status instantly.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border-slate-200 shadow-sm hover:shadow-md transition-all duration-200">
-              <CardHeader>
-                <div className="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center mb-4 text-slate-900">
-                  <CalendarDays className="h-6 w-6" />
-                </div>
-                <CardTitle>Calendar View</CardTitle>
-                <CardDescription>
-                  Plan your schedule with an integrated calendar. Never miss a
-                  deadline with smart reminders.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border-slate-200 shadow-sm hover:shadow-md transition-all duration-200">
-              <CardHeader>
-                <div className="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center mb-4 text-slate-900">
-                  <Users className="h-6 w-6" />
-                </div>
-                <CardTitle>Team Collaboration</CardTitle>
-                <CardDescription>
-                  Assign tasks, leave comments, and share files in real-time.
-                  Keep everyone on the same page.
+                  Kestra scans your entire codebase, creates embeddings, and
+                  builds a code graph for deep understanding.
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -315,10 +248,10 @@ export default function TaskFlowLanding() {
                 <div className="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center mb-4 text-slate-900">
                   <BarChart3 className="h-6 w-6" />
                 </div>
-                <CardTitle>Analytics & Reports</CardTitle>
+                <CardTitle>Issue Analysis</CardTitle>
                 <CardDescription>
-                  Gain insights into team performance with detailed analytics.
-                  Track velocity and completion rates.
+                  AI reads issue descriptions, links affected code sections, and
+                  extracts stack traces automatically.
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -328,10 +261,10 @@ export default function TaskFlowLanding() {
                 <div className="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center mb-4 text-slate-900">
                   <CheckCircle2 className="h-6 w-6" />
                 </div>
-                <CardTitle>Task Automation</CardTitle>
+                <CardTitle>Fix Plan Generation</CardTitle>
                 <CardDescription>
-                  Automate repetitive tasks with custom rules. Focus on what
-                  matters while TaskFlow handles the rest.
+                  Together.ai and Oumi LLMs produce detailed solutions with
+                  file-by-file instructions and edge case analysis.
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -339,39 +272,51 @@ export default function TaskFlowLanding() {
             <Card className="border-slate-200 shadow-sm hover:shadow-md transition-all duration-200">
               <CardHeader>
                 <div className="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center mb-4 text-slate-900">
-                  <Command className="h-6 w-6" />
+                  <Users className="h-6 w-6" />
                 </div>
-                <CardTitle>Keyboard Shortcuts</CardTitle>
+                <CardTitle>Cline Agents</CardTitle>
                 <CardDescription>
-                  Navigate TaskFlow with speed using intuitive keyboard
-                  shortcuts designed for power users.
+                  Auto-label PRs (bug, feature, docs) and generate clean commit
+                  messages following Conventional Commits.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="border-slate-200 shadow-sm hover:shadow-md transition-all duration-200">
+              <CardHeader>
+                <div className="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center mb-4 text-slate-900">
+                  <CalendarDays className="h-6 w-6" />
+                </div>
+                <CardTitle>CodeRabbit Review</CardTitle>
+                <CardDescription>
+                  Automated code reviews on every PR to ensure quality and catch
+                  potential issues before merge.
                 </CardDescription>
               </CardHeader>
             </Card>
           </div>
         </section>
 
-        {/* Pricing/CTA Section */}
+        {/* CTA Section */}
         <section className="bg-slate-50 border-y border-slate-200">
           <div className="container mx-auto px-4 md:px-6 py-12 md:py-24 text-center">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-6">
-              Start organizing your work today
+              Start fixing issues with AI today
             </h2>
             <p className="mx-auto max-w-[600px] text-slate-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed mb-8">
-              Join thousands of teams who rely on TaskFlow to deliver projects
-              on time, every time.
+              Connect your GitHub account and let AI handle the heavy lifting of
+              understanding and fixing code issues.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="h-12 px-8">
-                Get Started for Free
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="h-12 px-8 bg-white"
-              >
-                Contact Sales
-              </Button>
+              {isAuthenticated ? (
+                <Button size="lg" className="h-12 px-8" asChild>
+                  <Link href="/dashboard">Open Dashboard</Link>
+                </Button>
+              ) : (
+                <Button size="lg" className="h-12 px-8" asChild>
+                  <Link href="/auth/sign-in">Get Started for Free</Link>
+                </Button>
+              )}
             </div>
 
             <div className="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm text-slate-500">
@@ -380,10 +325,11 @@ export default function TaskFlowLanding() {
                 required
               </div>
               <div className="flex items-center gap-2">
-                <Check className="h-4 w-4 text-green-500" /> 14-day free trial
+                <Check className="h-4 w-4 text-green-500" /> Free for open
+                source
               </div>
               <div className="flex items-center gap-2">
-                <Check className="h-4 w-4 text-green-500" /> Cancel anytime
+                <Check className="h-4 w-4 text-green-500" /> Unlimited repos
               </div>
             </div>
           </div>
@@ -392,32 +338,26 @@ export default function TaskFlowLanding() {
 
       {/* Footer */}
       <footer className="container mx-auto px-4 md:px-6 py-12 border-t border-slate-200 bg-white">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-8">
-          <div className="col-span-2 lg:col-span-2">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+          <div className="col-span-2">
             <div className="flex items-center gap-2 font-bold text-xl mb-4">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-950 text-white">
                 <Command className="h-5 w-5" />
               </div>
-              TaskFlow
+              OpenFix.AI
             </div>
             <p className="text-sm text-slate-500 max-w-xs mb-4">
-              Built with Next.js, Tailwind CSS, and Shadcn UI. The ultimate tool
-              for modern task management.
+              AI-powered GitHub issue resolver using Kestra, Cline, Together.ai,
+              and Oumi. Built for the hackathon.
             </p>
             <div className="flex gap-4">
               <a
-                href="#"
+                href="https://github.com/adilkadivala/open-fix"
+                target="_blank"
                 className="text-slate-400 hover:text-slate-900 transition-colors"
               >
                 <Github className="h-5 w-5" />
                 <span className="sr-only">GitHub</span>
-              </a>
-              <a
-                href="#"
-                className="text-slate-400 hover:text-slate-900 transition-colors"
-              >
-                <Twitter className="h-5 w-5" />
-                <span className="sr-only">Twitter</span>
               </a>
             </div>
           </div>
@@ -428,29 +368,7 @@ export default function TaskFlowLanding() {
               Features
             </a>
             <a href="#" className="text-sm text-slate-500 hover:text-slate-900">
-              Pricing
-            </a>
-            <a href="#" className="text-sm text-slate-500 hover:text-slate-900">
-              Changelog
-            </a>
-            <a href="#" className="text-sm text-slate-500 hover:text-slate-900">
-              Docs
-            </a>
-          </div>
-
-          <div className="flex flex-col gap-2">
-            <h3 className="font-semibold text-sm">Company</h3>
-            <a href="#" className="text-sm text-slate-500 hover:text-slate-900">
-              About
-            </a>
-            <a href="#" className="text-sm text-slate-500 hover:text-slate-900">
-              Blog
-            </a>
-            <a href="#" className="text-sm text-slate-500 hover:text-slate-900">
-              Careers
-            </a>
-            <a href="#" className="text-sm text-slate-500 hover:text-slate-900">
-              Contact
+              Documentation
             </a>
           </div>
 
@@ -465,10 +383,7 @@ export default function TaskFlowLanding() {
           </div>
         </div>
         <div className="flex flex-col md:flex-row justify-between items-center border-t border-slate-200 pt-8 text-sm text-slate-500">
-          <p>© 2024 TaskFlow Inc. All rights reserved.</p>
-          <div className="flex gap-4 mt-4 md:mt-0">
-            <span>Design inspired by TaskFlow</span>
-          </div>
+          <p>© 2024 OpenFix.AI. All rights reserved.</p>
         </div>
       </footer>
     </div>

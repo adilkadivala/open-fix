@@ -1,59 +1,128 @@
 id: fix_issue_flow
 namespace: openfix
+description: Clone repo, fix issue with AI, report result
 
 inputs:
-  - name: agentRunId
+  - id: agentRunId
     type: STRING
-  - name: repoUrl
+    required: true
+  - id: repoUrl
     type: STRING
-  - name: issueTitle
+    required: true
+  - id: issueTitle
     type: STRING
-  - name: issueBody
+    required: true
+  - id: issueBody
     type: STRING
+    required: false
+  - id: openaiApiKey
+    type: STRING
+    required: true
 
 tasks:
-  - id: log_start
-    type: io.kestra.plugin.core.log.Log
-    message: |
-      🚀 Starting AI Agent
-      Repo: {{ inputs.repoUrl }}
-      Issue: {{ inputs.issueTitle }}
+  - id: clone_repo
+    type: io.kestra.plugin.git.Clone
+    url: "{{ inputs.repoUrl }}"
+    branch: main
+    username: git
 
-  - id: run_cline
-    type: io.kestra.plugin.docker.Run
-    image: node:20
-    volumes:
-      - /tmp:/tmp
-    commands:
-      - npm install -g cline
-      - rm -rf /tmp/repo
-      - git clone "{{ inputs.repoUrl }}" /tmp/repo
-      - |
-          cline run \
-            --repo /tmp/repo \
-            --task "{{ inputs.issueTitle }} {{ inputs.issueBody }}"
-  - id: notify_backend_success
+  - id: run_ai_fix
+    type: io.kestra.plugin.scripts.python.Script
+    containerImage: python:3.11
+    beforeCommands:
+      - pip install --no-cache-dir openai>=1.0.0
+    env:
+      OPENAI_API_KEY: "{{ inputs.openaiApiKey }}"
+      REPO_DIR: "{{ outputs.clone_repo.directory }}"
+      ISSUE_TITLE: "{{ inputs.issueTitle }}"
+      ISSUE_BODY: "{{ inputs.issueBody }}"
+    outputFiles:
+      - patch.txt
+      - reasoning.txt
+    script: |
+      {% verbatim %}
+        from openai import OpenAI
+        import os, subprocess, json
+
+        os.chdir(os.environ["REPO_DIR"])
+        client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+
+        files = subprocess.run(
+            ["find", ".", "-type", "f"],
+            capture_output=True,
+            text=True
+        ).stdout[:2000]
+
+        prompt = f"""
+        Fix this GitHub issue.
+
+        Title: {os.environ.get("ISSUE_TITLE")}
+        Description: {os.environ.get("ISSUE_BODY")}
+
+        Files:
+        {files}
+
+        Respond ONLY in JSON:
+        {{
+          "reasoning": "...",
+          "files": [
+            {{ "path": "...", "content": "..." }}
+          ]
+        }}
+        """
+
+        res = client.chat.completions.create(
+            model="gpt-4o",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.3
+        )
+
+        raw = res.choices[0].message.content.strip()
+        if raw.startswith("```"):
+            raw = raw.split("```")[1]
+
+        data = json.loads(raw)
+
+        for f in data.get("files", []):
+            os.makedirs(os.path.dirname(f["path"]), exist_ok=True)
+            with open(f["path"], "w") as fp:
+                fp.write(f["content"])
+
+        subprocess.run(["git", "add", "."])
+        patch = subprocess.run(
+            ["git", "diff", "--cached"],
+            capture_output=True,
+            text=True
+        ).stdout
+
+        open("patch.txt", "w").write(patch or "No changes")
+        open("reasoning.txt", "w").write(data.get("reasoning", ""))
+      {% endverbatim %}
+
+  - id: send_results
     type: io.kestra.plugin.core.http.Request
     uri: http://host.docker.internal:3000/api/agent/cline
     method: POST
-    headers:
-      Content-Type: application/json
+    contentType: application/json
     body: |
       {
         "agentRunId": "{{ inputs.agentRunId }}",
-        "status": "success"
+        "patch": "{{ read('/tmp/patch.txt') }}",
+        "reasoning": "{{ read('/tmp/reasoning.txt') }}",
+        "logs": "AI fix completed"
       }
 
 errors:
-  - id: notify_backend_failure
+  - id: handle_error
     type: io.kestra.plugin.core.http.Request
-    uri: http://host.docker.internal:3000/api/agent/cline
+    uri: "http://host.docker.internal:3000/api/agent/cline"
     method: POST
-    headers:
-      Content-Type: application/json
+    contentType: application/json
     body: |
       {
         "agentRunId": "{{ inputs.agentRunId }}",
-        "status": "failed",
-        "error": "{{ error.message }}"
+        "output": "Error occurred",
+        "patch": "",
+        "reasoning": "Flow execution failed",
+        "logs": "Failed"
       }

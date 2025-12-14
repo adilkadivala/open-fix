@@ -20,38 +20,44 @@ export async function startAgent(projectId: string, issueId: string) {
       },
     });
 
-    const response = await fetch(
-      `${process.env.KESTRA_URL}/api/v1/executions`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${process.env.KESTRA_API_KEY}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          namespace: "openfix",
-          flowId: "fix_issue_flow",
-          inputs: {
-            agentRunId: agentRun.id,
-            repoUrl: project.repoUrl,
-            issueTitle: issue.title,
-            issueBody: issue.body ?? "",
-          },
-        }),
-      }
-    );
+    console.log("🚀 Triggering Kestra flow");
 
-    console.log(response);
+    const kestraUrl = process.env.KESTRA_URL;
+
+    const response = await fetch(`${kestraUrl}/api/v1/executions`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        namespace: "openfix",
+        flowId: "fix_issue_flow",
+        inputs: {
+          agentRunId: agentRun.id,
+          repoUrl: project.repoUrl,
+          issueTitle: issue.title,
+          issueBody: issue.body ?? "",
+          openaiApiKey: process.env.OPENAI_API_KEY || "",
+        },
+      }),
+    });
+
+    console.log("📥 Kestra response:", response.status);
 
     if (!response.ok) {
+      const errorText = await response.text();
+      console.error("❌ Error:", errorText);
+
       await prisma.agentRun.update({
         where: { id: agentRun.id },
         data: { status: "failed" },
       });
-      throw new Error("Kestra trigger failed");
+
+      throw new Error(`Kestra failed: ${response.status}`);
     }
 
     const kestraData = await response.json();
+    console.log("✅ Kestra execution:", kestraData.id);
 
     await prisma.kestraRun.create({
       data: {
@@ -71,7 +77,7 @@ export async function startAgent(projectId: string, issueId: string) {
 
     return agentRun;
   } catch (err) {
-    console.error("startAgent error:", err);
+    console.error("❌ Error:", err);
     throw err;
   }
 }

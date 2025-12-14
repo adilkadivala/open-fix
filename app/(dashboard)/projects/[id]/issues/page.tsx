@@ -20,7 +20,7 @@ export default async function ProjectIssuesPage({
   }
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-5 px-4">
       <h1 className="text-xl font-semibold">
         {project.repoOwner}/{project.repoName} — Issues
       </h1>
