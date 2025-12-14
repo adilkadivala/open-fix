@@ -16,7 +16,7 @@ export default async function AgentRunDetail(props: any) {
   if (!run) return <p>Run not found</p>;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 px-4">
       <h1 className="text-xl font-semibold">Agent Run #{id.slice(0, 6)}</h1>
 
       {/* KESTRA */}

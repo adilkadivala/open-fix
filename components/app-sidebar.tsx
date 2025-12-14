@@ -11,13 +11,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import {
-  Folder,
-  GitPullRequest,
-  Home,
-  PlugZap,
-  Workflow,
-} from "lucide-react";
+import { Folder, GitPullRequest, Home, PlugZap, Workflow } from "lucide-react";
 import Link from "next/link";
 
 const data = {
@@ -36,11 +30,6 @@ const data = {
       title: "Projects",
       url: "/projects",
       icon: GitPullRequest,
-    },
-    {
-      title: "Integrations",
-      url: "#",
-      icon: PlugZap,
     },
   ],
 };

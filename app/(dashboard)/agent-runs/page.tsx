@@ -13,13 +13,13 @@ export default async function AgentRunsPage() {
   });
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 px-4">
       <h1 className="text-2xl font-semibold">AI Agent Runs</h1>
 
       <div className="space-y-4">
         {runs.map((run) => (
           <Link
-            href={`/dashboard/agent-runs/${run.id}`}
+            href={`/agent-runs/${run.id}`}
             key={run.id}
             className="block p-4 rounded-lg border bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition"
           >
