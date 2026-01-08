@@ -39,12 +39,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 7.1.0
- * Query Engine version: ab635e6b9d606fa5c8fb8b1a7f909c3c3c1c98ba
+ * Prisma Client JS version: 7.2.0
+ * Query Engine version: 0c8ef2ce45c83248ab3df073180d5eda9e8be7a3
  */
 Prisma.prismaVersion = {
-  client: "7.1.0",
-  engine: "ab635e6b9d606fa5c8fb8b1a7f909c3c3c1c98ba"
+  client: "7.2.0",
+  engine: "0c8ef2ce45c83248ab3df073180d5eda9e8be7a3"
 }
 
 Prisma.PrismaClientKnownRequestError = PrismaClientKnownRequestError;
@@ -184,8 +184,8 @@ exports.Prisma.ModelName = {
  */
 const config = {
   "previewFeatures": [],
-  "clientVersion": "7.1.0",
-  "engineVersion": "ab635e6b9d606fa5c8fb8b1a7f909c3c3c1c98ba",
+  "clientVersion": "7.2.0",
+  "engineVersion": "0c8ef2ce45c83248ab3df073180d5eda9e8be7a3",
   "activeProvider": "postgresql",
   "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"./generated\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\n// user\nmodel User {\n  id        String   @id @default(uuid())\n  githubId  String   @unique\n  name      String?\n  email     String?  @unique\n  image     String?\n  createdAt DateTime @default(now())\n\n  projects  Repos[]\n  agentRuns AgentRun[]\n}\n\n// Repos\nmodel Repos {\n  id          String   @id @default(cuid())\n  name        String\n  description String?\n  repoUrl     String\n  repoOwner   String\n  repoName    String\n  createdAt   DateTime @default(now())\n\n  userId String\n  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  issues    Issue[]\n  agentRuns AgentRun[]\n}\n\n// issues\n\nmodel Issue {\n  id            String  @id @default(cuid())\n  githubIssueId Int?    @unique\n  title         String\n  body          String?\n  state         String\n  labels        Json?\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  projectId String\n  project   Repos  @relation(fields: [projectId], references: [id], onDelete: Cascade)\n\n  agentRuns AgentRun[]\n}\n\n// agent\n\nmodel AgentRun {\n  id      String @id @default(cuid())\n  status  String\n  runType String\n\n  issueId String?\n  issue   Issue?  @relation(fields: [issueId], references: [id], onDelete: SetNull)\n\n  projectId String\n  project   Repos  @relation(fields: [projectId], references: [id], onDelete: Cascade)\n\n  triggeredById String?\n  triggeredBy   User?   @relation(fields: [triggeredById], references: [id], onDelete: SetNull)\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  aiRun AIRun?\n}\n\n// AI run\nmodel AIRun {\n  id        String   @id @default(cuid())\n  prompt    String\n  response  String\n  steps     Json?\n  files     Json?\n  createdAt DateTime @default(now())\n\n  agentRunId String   @unique\n  agentRun   AgentRun @relation(fields: [agentRunId], references: [id], onDelete: Cascade)\n}\n"
 }
