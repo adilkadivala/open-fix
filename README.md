@@ -1,37 +1,34 @@
-
-# 🚀 OpenFix.AI – Autonomous AI Agent for Fixing GitHub Issues  
-> Build intelligent, automated code-maintainers powered by Cline + Kestra + GitHub.
+# OpenFix.AI – AI-Powered GitHub Issue Fixer  
+> Build intelligent, automated code-maintainers powered by OpenAI and GitHub.
 
 OpenFix.AI is an **AI-driven GitHub Issue Fixer** that automatically:
 
 - Reads a full GitHub repository  
-- Understands issues  
-- Plans a fix  
-- Generates patches using **Cline Autonomous Developer**  
-- Evaluates & summarizes using **Kestra AI Agent**  
-- Prepares production-ready patches  
+- Understands issues using OpenAI  
+- Generates step-by-step fix plans  
+- Identifies files that need updates  
 - (Optional) auto-opens Pull Requests
 
-The entire pipeline is orchestrated cleanly using **Next.js**, **Prisma**, **Supabase**, **Kestra**, and **Cline**.
+The entire pipeline is orchestrated cleanly using **Next.js**, **Prisma**, **Supabase**, and **OpenAI**.
 
 ---
 
-# 🧠 Why OpenFix.AI?
+#  Why OpenFix.AI?
 
 GitHub maintainers spend **hours triaging & fixing issues**.  
 This project automates the whole workflow:
 
 1. Sync repo issues  
-2. Understand an issue using Kestra agent  
-3. Let Cline autonomously produce the fix  
-4. Save logs, patch, reasoning  
+2. Understand an issue using OpenAI  
+3. Generate step-by-step fix plan  
+4. Identify files to update  
 5. Allow maintainers to review and merge
 
 Perfect for open-source teams, solo developers, hackathons, and agent-based development.
 
 ---
 
-# 🛠️ Tech Stack
+#  Tech Stack
 
 ## **Frontend**
 - **Next.js 14 (App Router)**
@@ -47,9 +44,7 @@ Perfect for open-source teams, solo developers, hackathons, and agent-based deve
 - **Vercel (Deployment)**
 
 ## **AI Pipeline**
-- **Kestra** → AI Orchestration, Summarization, Evaluation  
-- **Cline** → Autonomous Coding Agent (uses Together Models internally)  
-- **No Together / Oumi in backend — Cline handles reasoning**
+- **OpenAI** → Issue Analysis, Fix Planning, File Identification  
 
 ## **Integrations**
 - GitHub OAuth (User Authentication)
@@ -59,7 +54,7 @@ Perfect for open-source teams, solo developers, hackathons, and agent-based deve
 
 
 
-# ⚙️ Setup Instructions
+#  Setup Instructions
 
 ## 1. Clone Repo
 
@@ -91,7 +86,7 @@ GITHUB_CLIENT_SECRET=your_client_secret
 
 DATABASE_URL=postgresql://<user>:<password>@<host>/<db>
 
-KESTRA_URL=http://localhost:8080
+OPENAI_API_KEY=your_openai_api_key
 
 ```
 
@@ -114,7 +109,7 @@ npm run dev
 
 ---
 
-# 🚀 How to Use
+# How to Use
 
 ## 1. Sign in with GitHub
 
@@ -137,50 +132,40 @@ Fetch & store GitHub issues using `/api/github/issues`.
 Triggers:
 
 * Create `AgentRun`
-* Trigger Kestra workflow
-* Kestra triggers Cline
-* Cline produces final patch
+* Call OpenAI to analyze the issue
+* Generate step-by-step fix plan
+* Identify files to update
 * Prisma stores results
 
 ## 6. View Output
 
 Dashboard displays:
 
-* Patch
-* Reasoning log
-* Kestra summary
-* Kestra evaluation
-* Cline logs
+* AI analysis and explanation
+* Step-by-step fix instructions
+* Files that need updates
 
 ---
 
 # 🧪 AI Pipeline Responsibilities
 
-### ✔ Cline
+### ✔ OpenAI
 
-* Reads repo
-* Generates plan
-* Writes code
-* Creates patch
-* Provides reasoning
-* Uses Together model internally (optional)
-
-### ✔ Kestra
-
-* Coordinates pipeline
-* Summarizes repository context
-* Evaluates patch (replaces Oumi)
-* Logs workflow activities
-* Triggers Cline
+* Reads issue description
+* Analyzes the problem
+* Generates step-by-step solution
+* Identifies affected files
+* Provides detailed instructions
 
 ### ✔ Your Backend
 
 * Stores all runs
 * Provides dashboard UI
+* Handles GitHub API integrations
 
 ---
 
-# 🛠️ Tools Used
+#  Tools Used
 
 | Tool / Platform  | Purpose                                |
 | ---------------- | -------------------------------------- |
@@ -189,36 +174,8 @@ Dashboard displays:
 | **Prisma**       | ORM for PostgreSQL                     |
 | **Supabase**     | Hosted PostgreSQL database             |
 | **NextAuth**     | GitHub OAuth                           |
-| **Cline CLI**    | Autonomous coding agent                |
-| **Kestra**       | Workflow automation & AI orchestration |
+| **OpenAI**       | AI-powered issue analysis              |
 | **Tailwind CSS** | Styling                                |
 | **TypeScript**   | Type safety                            |
 | **GitHub API**   | Repo, Issues, PR automation            |
-
----
-
-# 🧩 Roadmap
-
-### Phase 1 – Core Functionality (Complete)
-
-* GitHub OAuth
-* Repo selection
-* Issue syncing
-* AgentRun model
-* Kestra integration
-* Cline integration
-
-### Phase 2 – Advanced Features
-
-* PR creation
-* Diff viewer
-* AgentRun timeline UI
-* Real-time log streaming
-
-### Phase 3 – Optional Expansions
-
-* Multi-model support
-* Repository embeddings
-* Agent collaboration mode
-* Multi-step patch validation
 

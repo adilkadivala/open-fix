@@ -34,15 +34,10 @@ export type Issue = $Result.DefaultSelection<Prisma.$IssuePayload>
  */
 export type AgentRun = $Result.DefaultSelection<Prisma.$AgentRunPayload>
 /**
- * Model KestraRun
+ * Model AIRun
  * 
  */
-export type KestraRun = $Result.DefaultSelection<Prisma.$KestraRunPayload>
-/**
- * Model ClineRun
- * 
- */
-export type ClineRun = $Result.DefaultSelection<Prisma.$ClineRunPayload>
+export type AIRun = $Result.DefaultSelection<Prisma.$AIRunPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -202,24 +197,14 @@ export class PrismaClient<
   get agentRun(): Prisma.AgentRunDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.kestraRun`: Exposes CRUD operations for the **KestraRun** model.
+   * `prisma.aIRun`: Exposes CRUD operations for the **AIRun** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more KestraRuns
-    * const kestraRuns = await prisma.kestraRun.findMany()
+    * // Fetch zero or more AIRuns
+    * const aIRuns = await prisma.aIRun.findMany()
     * ```
     */
-  get kestraRun(): Prisma.KestraRunDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.clineRun`: Exposes CRUD operations for the **ClineRun** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more ClineRuns
-    * const clineRuns = await prisma.clineRun.findMany()
-    * ```
-    */
-  get clineRun(): Prisma.ClineRunDelegate<ExtArgs, ClientOptions>;
+  get aIRun(): Prisma.AIRunDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -658,8 +643,7 @@ export namespace Prisma {
     Repos: 'Repos',
     Issue: 'Issue',
     AgentRun: 'AgentRun',
-    KestraRun: 'KestraRun',
-    ClineRun: 'ClineRun'
+    AIRun: 'AIRun'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -675,7 +659,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "repos" | "issue" | "agentRun" | "kestraRun" | "clineRun"
+      modelProps: "user" | "repos" | "issue" | "agentRun" | "aIRun"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -975,151 +959,77 @@ export namespace Prisma {
           }
         }
       }
-      KestraRun: {
-        payload: Prisma.$KestraRunPayload<ExtArgs>
-        fields: Prisma.KestraRunFieldRefs
+      AIRun: {
+        payload: Prisma.$AIRunPayload<ExtArgs>
+        fields: Prisma.AIRunFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.KestraRunFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$KestraRunPayload> | null
+            args: Prisma.AIRunFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AIRunPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.KestraRunFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$KestraRunPayload>
+            args: Prisma.AIRunFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AIRunPayload>
           }
           findFirst: {
-            args: Prisma.KestraRunFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$KestraRunPayload> | null
+            args: Prisma.AIRunFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AIRunPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.KestraRunFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$KestraRunPayload>
+            args: Prisma.AIRunFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AIRunPayload>
           }
           findMany: {
-            args: Prisma.KestraRunFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$KestraRunPayload>[]
+            args: Prisma.AIRunFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AIRunPayload>[]
           }
           create: {
-            args: Prisma.KestraRunCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$KestraRunPayload>
+            args: Prisma.AIRunCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AIRunPayload>
           }
           createMany: {
-            args: Prisma.KestraRunCreateManyArgs<ExtArgs>
+            args: Prisma.AIRunCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.KestraRunCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$KestraRunPayload>[]
+            args: Prisma.AIRunCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AIRunPayload>[]
           }
           delete: {
-            args: Prisma.KestraRunDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$KestraRunPayload>
+            args: Prisma.AIRunDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AIRunPayload>
           }
           update: {
-            args: Prisma.KestraRunUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$KestraRunPayload>
+            args: Prisma.AIRunUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AIRunPayload>
           }
           deleteMany: {
-            args: Prisma.KestraRunDeleteManyArgs<ExtArgs>
+            args: Prisma.AIRunDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.KestraRunUpdateManyArgs<ExtArgs>
+            args: Prisma.AIRunUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.KestraRunUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$KestraRunPayload>[]
+            args: Prisma.AIRunUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AIRunPayload>[]
           }
           upsert: {
-            args: Prisma.KestraRunUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$KestraRunPayload>
+            args: Prisma.AIRunUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AIRunPayload>
           }
           aggregate: {
-            args: Prisma.KestraRunAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateKestraRun>
+            args: Prisma.AIRunAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAIRun>
           }
           groupBy: {
-            args: Prisma.KestraRunGroupByArgs<ExtArgs>
-            result: $Utils.Optional<KestraRunGroupByOutputType>[]
+            args: Prisma.AIRunGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AIRunGroupByOutputType>[]
           }
           count: {
-            args: Prisma.KestraRunCountArgs<ExtArgs>
-            result: $Utils.Optional<KestraRunCountAggregateOutputType> | number
-          }
-        }
-      }
-      ClineRun: {
-        payload: Prisma.$ClineRunPayload<ExtArgs>
-        fields: Prisma.ClineRunFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.ClineRunFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClineRunPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.ClineRunFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClineRunPayload>
-          }
-          findFirst: {
-            args: Prisma.ClineRunFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClineRunPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.ClineRunFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClineRunPayload>
-          }
-          findMany: {
-            args: Prisma.ClineRunFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClineRunPayload>[]
-          }
-          create: {
-            args: Prisma.ClineRunCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClineRunPayload>
-          }
-          createMany: {
-            args: Prisma.ClineRunCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.ClineRunCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClineRunPayload>[]
-          }
-          delete: {
-            args: Prisma.ClineRunDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClineRunPayload>
-          }
-          update: {
-            args: Prisma.ClineRunUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClineRunPayload>
-          }
-          deleteMany: {
-            args: Prisma.ClineRunDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.ClineRunUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.ClineRunUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClineRunPayload>[]
-          }
-          upsert: {
-            args: Prisma.ClineRunUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClineRunPayload>
-          }
-          aggregate: {
-            args: Prisma.ClineRunAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateClineRun>
-          }
-          groupBy: {
-            args: Prisma.ClineRunGroupByArgs<ExtArgs>
-            result: $Utils.Optional<ClineRunGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.ClineRunCountArgs<ExtArgs>
-            result: $Utils.Optional<ClineRunCountAggregateOutputType> | number
+            args: Prisma.AIRunCountArgs<ExtArgs>
+            result: $Utils.Optional<AIRunCountAggregateOutputType> | number
           }
         }
       }
@@ -1235,8 +1145,7 @@ export namespace Prisma {
     repos?: ReposOmit
     issue?: IssueOmit
     agentRun?: AgentRunOmit
-    kestraRun?: KestraRunOmit
-    clineRun?: ClineRunOmit
+    aIRun?: AIRunOmit
   }
 
   /* Types for Logging */
@@ -5054,8 +4963,7 @@ export namespace Prisma {
     issue?: boolean | AgentRun$issueArgs<ExtArgs>
     project?: boolean | ReposDefaultArgs<ExtArgs>
     triggeredBy?: boolean | AgentRun$triggeredByArgs<ExtArgs>
-    kestraRun?: boolean | AgentRun$kestraRunArgs<ExtArgs>
-    clineRun?: boolean | AgentRun$clineRunArgs<ExtArgs>
+    aiRun?: boolean | AgentRun$aiRunArgs<ExtArgs>
   }, ExtArgs["result"]["agentRun"]>
 
   export type AgentRunSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5102,8 +5010,7 @@ export namespace Prisma {
     issue?: boolean | AgentRun$issueArgs<ExtArgs>
     project?: boolean | ReposDefaultArgs<ExtArgs>
     triggeredBy?: boolean | AgentRun$triggeredByArgs<ExtArgs>
-    kestraRun?: boolean | AgentRun$kestraRunArgs<ExtArgs>
-    clineRun?: boolean | AgentRun$clineRunArgs<ExtArgs>
+    aiRun?: boolean | AgentRun$aiRunArgs<ExtArgs>
   }
   export type AgentRunIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     issue?: boolean | AgentRun$issueArgs<ExtArgs>
@@ -5122,8 +5029,7 @@ export namespace Prisma {
       issue: Prisma.$IssuePayload<ExtArgs> | null
       project: Prisma.$ReposPayload<ExtArgs>
       triggeredBy: Prisma.$UserPayload<ExtArgs> | null
-      kestraRun: Prisma.$KestraRunPayload<ExtArgs> | null
-      clineRun: Prisma.$ClineRunPayload<ExtArgs> | null
+      aiRun: Prisma.$AIRunPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -5531,8 +5437,7 @@ export namespace Prisma {
     issue<T extends AgentRun$issueArgs<ExtArgs> = {}>(args?: Subset<T, AgentRun$issueArgs<ExtArgs>>): Prisma__IssueClient<$Result.GetResult<Prisma.$IssuePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     project<T extends ReposDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ReposDefaultArgs<ExtArgs>>): Prisma__ReposClient<$Result.GetResult<Prisma.$ReposPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     triggeredBy<T extends AgentRun$triggeredByArgs<ExtArgs> = {}>(args?: Subset<T, AgentRun$triggeredByArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    kestraRun<T extends AgentRun$kestraRunArgs<ExtArgs> = {}>(args?: Subset<T, AgentRun$kestraRunArgs<ExtArgs>>): Prisma__KestraRunClient<$Result.GetResult<Prisma.$KestraRunPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    clineRun<T extends AgentRun$clineRunArgs<ExtArgs> = {}>(args?: Subset<T, AgentRun$clineRunArgs<ExtArgs>>): Prisma__ClineRunClient<$Result.GetResult<Prisma.$ClineRunPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    aiRun<T extends AgentRun$aiRunArgs<ExtArgs> = {}>(args?: Subset<T, AgentRun$aiRunArgs<ExtArgs>>): Prisma__AIRunClient<$Result.GetResult<Prisma.$AIRunPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6004,41 +5909,22 @@ export namespace Prisma {
   }
 
   /**
-   * AgentRun.kestraRun
+   * AgentRun.aiRun
    */
-  export type AgentRun$kestraRunArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AgentRun$aiRunArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the KestraRun
+     * Select specific fields to fetch from the AIRun
      */
-    select?: KestraRunSelect<ExtArgs> | null
+    select?: AIRunSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the KestraRun
+     * Omit specific fields from the AIRun
      */
-    omit?: KestraRunOmit<ExtArgs> | null
+    omit?: AIRunOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: KestraRunInclude<ExtArgs> | null
-    where?: KestraRunWhereInput
-  }
-
-  /**
-   * AgentRun.clineRun
-   */
-  export type AgentRun$clineRunArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ClineRun
-     */
-    select?: ClineRunSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ClineRun
-     */
-    omit?: ClineRunOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ClineRunInclude<ExtArgs> | null
-    where?: ClineRunWhereInput
+    include?: AIRunInclude<ExtArgs> | null
+    where?: AIRunWhereInput
   }
 
   /**
@@ -6061,378 +5947,366 @@ export namespace Prisma {
 
 
   /**
-   * Model KestraRun
+   * Model AIRun
    */
 
-  export type AggregateKestraRun = {
-    _count: KestraRunCountAggregateOutputType | null
-    _min: KestraRunMinAggregateOutputType | null
-    _max: KestraRunMaxAggregateOutputType | null
+  export type AggregateAIRun = {
+    _count: AIRunCountAggregateOutputType | null
+    _min: AIRunMinAggregateOutputType | null
+    _max: AIRunMaxAggregateOutputType | null
   }
 
-  export type KestraRunMinAggregateOutputType = {
+  export type AIRunMinAggregateOutputType = {
     id: string | null
-    flowId: string | null
-    flowStatus: string | null
-    summary: string | null
+    prompt: string | null
+    response: string | null
     createdAt: Date | null
     agentRunId: string | null
   }
 
-  export type KestraRunMaxAggregateOutputType = {
+  export type AIRunMaxAggregateOutputType = {
     id: string | null
-    flowId: string | null
-    flowStatus: string | null
-    summary: string | null
+    prompt: string | null
+    response: string | null
     createdAt: Date | null
     agentRunId: string | null
   }
 
-  export type KestraRunCountAggregateOutputType = {
+  export type AIRunCountAggregateOutputType = {
     id: number
-    flowId: number
-    flowStatus: number
-    summary: number
-    evaluation: number
-    logs: number
+    prompt: number
+    response: number
+    steps: number
+    files: number
     createdAt: number
     agentRunId: number
     _all: number
   }
 
 
-  export type KestraRunMinAggregateInputType = {
+  export type AIRunMinAggregateInputType = {
     id?: true
-    flowId?: true
-    flowStatus?: true
-    summary?: true
+    prompt?: true
+    response?: true
     createdAt?: true
     agentRunId?: true
   }
 
-  export type KestraRunMaxAggregateInputType = {
+  export type AIRunMaxAggregateInputType = {
     id?: true
-    flowId?: true
-    flowStatus?: true
-    summary?: true
+    prompt?: true
+    response?: true
     createdAt?: true
     agentRunId?: true
   }
 
-  export type KestraRunCountAggregateInputType = {
+  export type AIRunCountAggregateInputType = {
     id?: true
-    flowId?: true
-    flowStatus?: true
-    summary?: true
-    evaluation?: true
-    logs?: true
+    prompt?: true
+    response?: true
+    steps?: true
+    files?: true
     createdAt?: true
     agentRunId?: true
     _all?: true
   }
 
-  export type KestraRunAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AIRunAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which KestraRun to aggregate.
+     * Filter which AIRun to aggregate.
      */
-    where?: KestraRunWhereInput
+    where?: AIRunWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of KestraRuns to fetch.
+     * Determine the order of AIRuns to fetch.
      */
-    orderBy?: KestraRunOrderByWithRelationInput | KestraRunOrderByWithRelationInput[]
+    orderBy?: AIRunOrderByWithRelationInput | AIRunOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: KestraRunWhereUniqueInput
+    cursor?: AIRunWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` KestraRuns from the position of the cursor.
+     * Take `±n` AIRuns from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` KestraRuns.
+     * Skip the first `n` AIRuns.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned KestraRuns
+     * Count returned AIRuns
     **/
-    _count?: true | KestraRunCountAggregateInputType
+    _count?: true | AIRunCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: KestraRunMinAggregateInputType
+    _min?: AIRunMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: KestraRunMaxAggregateInputType
+    _max?: AIRunMaxAggregateInputType
   }
 
-  export type GetKestraRunAggregateType<T extends KestraRunAggregateArgs> = {
-        [P in keyof T & keyof AggregateKestraRun]: P extends '_count' | 'count'
+  export type GetAIRunAggregateType<T extends AIRunAggregateArgs> = {
+        [P in keyof T & keyof AggregateAIRun]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateKestraRun[P]>
-      : GetScalarType<T[P], AggregateKestraRun[P]>
+        : GetScalarType<T[P], AggregateAIRun[P]>
+      : GetScalarType<T[P], AggregateAIRun[P]>
   }
 
 
 
 
-  export type KestraRunGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: KestraRunWhereInput
-    orderBy?: KestraRunOrderByWithAggregationInput | KestraRunOrderByWithAggregationInput[]
-    by: KestraRunScalarFieldEnum[] | KestraRunScalarFieldEnum
-    having?: KestraRunScalarWhereWithAggregatesInput
+  export type AIRunGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AIRunWhereInput
+    orderBy?: AIRunOrderByWithAggregationInput | AIRunOrderByWithAggregationInput[]
+    by: AIRunScalarFieldEnum[] | AIRunScalarFieldEnum
+    having?: AIRunScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: KestraRunCountAggregateInputType | true
-    _min?: KestraRunMinAggregateInputType
-    _max?: KestraRunMaxAggregateInputType
+    _count?: AIRunCountAggregateInputType | true
+    _min?: AIRunMinAggregateInputType
+    _max?: AIRunMaxAggregateInputType
   }
 
-  export type KestraRunGroupByOutputType = {
+  export type AIRunGroupByOutputType = {
     id: string
-    flowId: string | null
-    flowStatus: string | null
-    summary: string | null
-    evaluation: JsonValue | null
-    logs: JsonValue | null
+    prompt: string
+    response: string
+    steps: JsonValue | null
+    files: JsonValue | null
     createdAt: Date
     agentRunId: string
-    _count: KestraRunCountAggregateOutputType | null
-    _min: KestraRunMinAggregateOutputType | null
-    _max: KestraRunMaxAggregateOutputType | null
+    _count: AIRunCountAggregateOutputType | null
+    _min: AIRunMinAggregateOutputType | null
+    _max: AIRunMaxAggregateOutputType | null
   }
 
-  type GetKestraRunGroupByPayload<T extends KestraRunGroupByArgs> = Prisma.PrismaPromise<
+  type GetAIRunGroupByPayload<T extends AIRunGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<KestraRunGroupByOutputType, T['by']> &
+      PickEnumerable<AIRunGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof KestraRunGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof AIRunGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], KestraRunGroupByOutputType[P]>
-            : GetScalarType<T[P], KestraRunGroupByOutputType[P]>
+              : GetScalarType<T[P], AIRunGroupByOutputType[P]>
+            : GetScalarType<T[P], AIRunGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type KestraRunSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type AIRunSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    flowId?: boolean
-    flowStatus?: boolean
-    summary?: boolean
-    evaluation?: boolean
-    logs?: boolean
+    prompt?: boolean
+    response?: boolean
+    steps?: boolean
+    files?: boolean
     createdAt?: boolean
     agentRunId?: boolean
     agentRun?: boolean | AgentRunDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["kestraRun"]>
+  }, ExtArgs["result"]["aIRun"]>
 
-  export type KestraRunSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type AIRunSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    flowId?: boolean
-    flowStatus?: boolean
-    summary?: boolean
-    evaluation?: boolean
-    logs?: boolean
+    prompt?: boolean
+    response?: boolean
+    steps?: boolean
+    files?: boolean
     createdAt?: boolean
     agentRunId?: boolean
     agentRun?: boolean | AgentRunDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["kestraRun"]>
+  }, ExtArgs["result"]["aIRun"]>
 
-  export type KestraRunSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type AIRunSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    flowId?: boolean
-    flowStatus?: boolean
-    summary?: boolean
-    evaluation?: boolean
-    logs?: boolean
+    prompt?: boolean
+    response?: boolean
+    steps?: boolean
+    files?: boolean
     createdAt?: boolean
     agentRunId?: boolean
     agentRun?: boolean | AgentRunDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["kestraRun"]>
+  }, ExtArgs["result"]["aIRun"]>
 
-  export type KestraRunSelectScalar = {
+  export type AIRunSelectScalar = {
     id?: boolean
-    flowId?: boolean
-    flowStatus?: boolean
-    summary?: boolean
-    evaluation?: boolean
-    logs?: boolean
+    prompt?: boolean
+    response?: boolean
+    steps?: boolean
+    files?: boolean
     createdAt?: boolean
     agentRunId?: boolean
   }
 
-  export type KestraRunOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "flowId" | "flowStatus" | "summary" | "evaluation" | "logs" | "createdAt" | "agentRunId", ExtArgs["result"]["kestraRun"]>
-  export type KestraRunInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AIRunOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "prompt" | "response" | "steps" | "files" | "createdAt" | "agentRunId", ExtArgs["result"]["aIRun"]>
+  export type AIRunInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     agentRun?: boolean | AgentRunDefaultArgs<ExtArgs>
   }
-  export type KestraRunIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AIRunIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     agentRun?: boolean | AgentRunDefaultArgs<ExtArgs>
   }
-  export type KestraRunIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AIRunIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     agentRun?: boolean | AgentRunDefaultArgs<ExtArgs>
   }
 
-  export type $KestraRunPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "KestraRun"
+  export type $AIRunPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "AIRun"
     objects: {
       agentRun: Prisma.$AgentRunPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      flowId: string | null
-      flowStatus: string | null
-      summary: string | null
-      evaluation: Prisma.JsonValue | null
-      logs: Prisma.JsonValue | null
+      prompt: string
+      response: string
+      steps: Prisma.JsonValue | null
+      files: Prisma.JsonValue | null
       createdAt: Date
       agentRunId: string
-    }, ExtArgs["result"]["kestraRun"]>
+    }, ExtArgs["result"]["aIRun"]>
     composites: {}
   }
 
-  type KestraRunGetPayload<S extends boolean | null | undefined | KestraRunDefaultArgs> = $Result.GetResult<Prisma.$KestraRunPayload, S>
+  type AIRunGetPayload<S extends boolean | null | undefined | AIRunDefaultArgs> = $Result.GetResult<Prisma.$AIRunPayload, S>
 
-  type KestraRunCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<KestraRunFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: KestraRunCountAggregateInputType | true
+  type AIRunCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AIRunFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AIRunCountAggregateInputType | true
     }
 
-  export interface KestraRunDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['KestraRun'], meta: { name: 'KestraRun' } }
+  export interface AIRunDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AIRun'], meta: { name: 'AIRun' } }
     /**
-     * Find zero or one KestraRun that matches the filter.
-     * @param {KestraRunFindUniqueArgs} args - Arguments to find a KestraRun
+     * Find zero or one AIRun that matches the filter.
+     * @param {AIRunFindUniqueArgs} args - Arguments to find a AIRun
      * @example
-     * // Get one KestraRun
-     * const kestraRun = await prisma.kestraRun.findUnique({
+     * // Get one AIRun
+     * const aIRun = await prisma.aIRun.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends KestraRunFindUniqueArgs>(args: SelectSubset<T, KestraRunFindUniqueArgs<ExtArgs>>): Prisma__KestraRunClient<$Result.GetResult<Prisma.$KestraRunPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends AIRunFindUniqueArgs>(args: SelectSubset<T, AIRunFindUniqueArgs<ExtArgs>>): Prisma__AIRunClient<$Result.GetResult<Prisma.$AIRunPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one KestraRun that matches the filter or throw an error with `error.code='P2025'`
+     * Find one AIRun that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {KestraRunFindUniqueOrThrowArgs} args - Arguments to find a KestraRun
+     * @param {AIRunFindUniqueOrThrowArgs} args - Arguments to find a AIRun
      * @example
-     * // Get one KestraRun
-     * const kestraRun = await prisma.kestraRun.findUniqueOrThrow({
+     * // Get one AIRun
+     * const aIRun = await prisma.aIRun.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends KestraRunFindUniqueOrThrowArgs>(args: SelectSubset<T, KestraRunFindUniqueOrThrowArgs<ExtArgs>>): Prisma__KestraRunClient<$Result.GetResult<Prisma.$KestraRunPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends AIRunFindUniqueOrThrowArgs>(args: SelectSubset<T, AIRunFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AIRunClient<$Result.GetResult<Prisma.$AIRunPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first KestraRun that matches the filter.
+     * Find the first AIRun that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {KestraRunFindFirstArgs} args - Arguments to find a KestraRun
+     * @param {AIRunFindFirstArgs} args - Arguments to find a AIRun
      * @example
-     * // Get one KestraRun
-     * const kestraRun = await prisma.kestraRun.findFirst({
+     * // Get one AIRun
+     * const aIRun = await prisma.aIRun.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends KestraRunFindFirstArgs>(args?: SelectSubset<T, KestraRunFindFirstArgs<ExtArgs>>): Prisma__KestraRunClient<$Result.GetResult<Prisma.$KestraRunPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends AIRunFindFirstArgs>(args?: SelectSubset<T, AIRunFindFirstArgs<ExtArgs>>): Prisma__AIRunClient<$Result.GetResult<Prisma.$AIRunPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first KestraRun that matches the filter or
+     * Find the first AIRun that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {KestraRunFindFirstOrThrowArgs} args - Arguments to find a KestraRun
+     * @param {AIRunFindFirstOrThrowArgs} args - Arguments to find a AIRun
      * @example
-     * // Get one KestraRun
-     * const kestraRun = await prisma.kestraRun.findFirstOrThrow({
+     * // Get one AIRun
+     * const aIRun = await prisma.aIRun.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends KestraRunFindFirstOrThrowArgs>(args?: SelectSubset<T, KestraRunFindFirstOrThrowArgs<ExtArgs>>): Prisma__KestraRunClient<$Result.GetResult<Prisma.$KestraRunPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends AIRunFindFirstOrThrowArgs>(args?: SelectSubset<T, AIRunFindFirstOrThrowArgs<ExtArgs>>): Prisma__AIRunClient<$Result.GetResult<Prisma.$AIRunPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more KestraRuns that matches the filter.
+     * Find zero or more AIRuns that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {KestraRunFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {AIRunFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all KestraRuns
-     * const kestraRuns = await prisma.kestraRun.findMany()
+     * // Get all AIRuns
+     * const aIRuns = await prisma.aIRun.findMany()
      * 
-     * // Get first 10 KestraRuns
-     * const kestraRuns = await prisma.kestraRun.findMany({ take: 10 })
+     * // Get first 10 AIRuns
+     * const aIRuns = await prisma.aIRun.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const kestraRunWithIdOnly = await prisma.kestraRun.findMany({ select: { id: true } })
+     * const aIRunWithIdOnly = await prisma.aIRun.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends KestraRunFindManyArgs>(args?: SelectSubset<T, KestraRunFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$KestraRunPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends AIRunFindManyArgs>(args?: SelectSubset<T, AIRunFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AIRunPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a KestraRun.
-     * @param {KestraRunCreateArgs} args - Arguments to create a KestraRun.
+     * Create a AIRun.
+     * @param {AIRunCreateArgs} args - Arguments to create a AIRun.
      * @example
-     * // Create one KestraRun
-     * const KestraRun = await prisma.kestraRun.create({
+     * // Create one AIRun
+     * const AIRun = await prisma.aIRun.create({
      *   data: {
-     *     // ... data to create a KestraRun
+     *     // ... data to create a AIRun
      *   }
      * })
      * 
      */
-    create<T extends KestraRunCreateArgs>(args: SelectSubset<T, KestraRunCreateArgs<ExtArgs>>): Prisma__KestraRunClient<$Result.GetResult<Prisma.$KestraRunPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends AIRunCreateArgs>(args: SelectSubset<T, AIRunCreateArgs<ExtArgs>>): Prisma__AIRunClient<$Result.GetResult<Prisma.$AIRunPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many KestraRuns.
-     * @param {KestraRunCreateManyArgs} args - Arguments to create many KestraRuns.
+     * Create many AIRuns.
+     * @param {AIRunCreateManyArgs} args - Arguments to create many AIRuns.
      * @example
-     * // Create many KestraRuns
-     * const kestraRun = await prisma.kestraRun.createMany({
+     * // Create many AIRuns
+     * const aIRun = await prisma.aIRun.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends KestraRunCreateManyArgs>(args?: SelectSubset<T, KestraRunCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends AIRunCreateManyArgs>(args?: SelectSubset<T, AIRunCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many KestraRuns and returns the data saved in the database.
-     * @param {KestraRunCreateManyAndReturnArgs} args - Arguments to create many KestraRuns.
+     * Create many AIRuns and returns the data saved in the database.
+     * @param {AIRunCreateManyAndReturnArgs} args - Arguments to create many AIRuns.
      * @example
-     * // Create many KestraRuns
-     * const kestraRun = await prisma.kestraRun.createManyAndReturn({
+     * // Create many AIRuns
+     * const aIRun = await prisma.aIRun.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many KestraRuns and only return the `id`
-     * const kestraRunWithIdOnly = await prisma.kestraRun.createManyAndReturn({
+     * // Create many AIRuns and only return the `id`
+     * const aIRunWithIdOnly = await prisma.aIRun.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -6442,28 +6316,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends KestraRunCreateManyAndReturnArgs>(args?: SelectSubset<T, KestraRunCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$KestraRunPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends AIRunCreateManyAndReturnArgs>(args?: SelectSubset<T, AIRunCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AIRunPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a KestraRun.
-     * @param {KestraRunDeleteArgs} args - Arguments to delete one KestraRun.
+     * Delete a AIRun.
+     * @param {AIRunDeleteArgs} args - Arguments to delete one AIRun.
      * @example
-     * // Delete one KestraRun
-     * const KestraRun = await prisma.kestraRun.delete({
+     * // Delete one AIRun
+     * const AIRun = await prisma.aIRun.delete({
      *   where: {
-     *     // ... filter to delete one KestraRun
+     *     // ... filter to delete one AIRun
      *   }
      * })
      * 
      */
-    delete<T extends KestraRunDeleteArgs>(args: SelectSubset<T, KestraRunDeleteArgs<ExtArgs>>): Prisma__KestraRunClient<$Result.GetResult<Prisma.$KestraRunPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends AIRunDeleteArgs>(args: SelectSubset<T, AIRunDeleteArgs<ExtArgs>>): Prisma__AIRunClient<$Result.GetResult<Prisma.$AIRunPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one KestraRun.
-     * @param {KestraRunUpdateArgs} args - Arguments to update one KestraRun.
+     * Update one AIRun.
+     * @param {AIRunUpdateArgs} args - Arguments to update one AIRun.
      * @example
-     * // Update one KestraRun
-     * const kestraRun = await prisma.kestraRun.update({
+     * // Update one AIRun
+     * const aIRun = await prisma.aIRun.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -6473,30 +6347,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends KestraRunUpdateArgs>(args: SelectSubset<T, KestraRunUpdateArgs<ExtArgs>>): Prisma__KestraRunClient<$Result.GetResult<Prisma.$KestraRunPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends AIRunUpdateArgs>(args: SelectSubset<T, AIRunUpdateArgs<ExtArgs>>): Prisma__AIRunClient<$Result.GetResult<Prisma.$AIRunPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more KestraRuns.
-     * @param {KestraRunDeleteManyArgs} args - Arguments to filter KestraRuns to delete.
+     * Delete zero or more AIRuns.
+     * @param {AIRunDeleteManyArgs} args - Arguments to filter AIRuns to delete.
      * @example
-     * // Delete a few KestraRuns
-     * const { count } = await prisma.kestraRun.deleteMany({
+     * // Delete a few AIRuns
+     * const { count } = await prisma.aIRun.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends KestraRunDeleteManyArgs>(args?: SelectSubset<T, KestraRunDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends AIRunDeleteManyArgs>(args?: SelectSubset<T, AIRunDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more KestraRuns.
+     * Update zero or more AIRuns.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {KestraRunUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {AIRunUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many KestraRuns
-     * const kestraRun = await prisma.kestraRun.updateMany({
+     * // Update many AIRuns
+     * const aIRun = await prisma.aIRun.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -6506,14 +6380,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends KestraRunUpdateManyArgs>(args: SelectSubset<T, KestraRunUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends AIRunUpdateManyArgs>(args: SelectSubset<T, AIRunUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more KestraRuns and returns the data updated in the database.
-     * @param {KestraRunUpdateManyAndReturnArgs} args - Arguments to update many KestraRuns.
+     * Update zero or more AIRuns and returns the data updated in the database.
+     * @param {AIRunUpdateManyAndReturnArgs} args - Arguments to update many AIRuns.
      * @example
-     * // Update many KestraRuns
-     * const kestraRun = await prisma.kestraRun.updateManyAndReturn({
+     * // Update many AIRuns
+     * const aIRun = await prisma.aIRun.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -6522,8 +6396,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more KestraRuns and only return the `id`
-     * const kestraRunWithIdOnly = await prisma.kestraRun.updateManyAndReturn({
+     * // Update zero or more AIRuns and only return the `id`
+     * const aIRunWithIdOnly = await prisma.aIRun.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -6536,56 +6410,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends KestraRunUpdateManyAndReturnArgs>(args: SelectSubset<T, KestraRunUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$KestraRunPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends AIRunUpdateManyAndReturnArgs>(args: SelectSubset<T, AIRunUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AIRunPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one KestraRun.
-     * @param {KestraRunUpsertArgs} args - Arguments to update or create a KestraRun.
+     * Create or update one AIRun.
+     * @param {AIRunUpsertArgs} args - Arguments to update or create a AIRun.
      * @example
-     * // Update or create a KestraRun
-     * const kestraRun = await prisma.kestraRun.upsert({
+     * // Update or create a AIRun
+     * const aIRun = await prisma.aIRun.upsert({
      *   create: {
-     *     // ... data to create a KestraRun
+     *     // ... data to create a AIRun
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the KestraRun we want to update
+     *     // ... the filter for the AIRun we want to update
      *   }
      * })
      */
-    upsert<T extends KestraRunUpsertArgs>(args: SelectSubset<T, KestraRunUpsertArgs<ExtArgs>>): Prisma__KestraRunClient<$Result.GetResult<Prisma.$KestraRunPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends AIRunUpsertArgs>(args: SelectSubset<T, AIRunUpsertArgs<ExtArgs>>): Prisma__AIRunClient<$Result.GetResult<Prisma.$AIRunPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of KestraRuns.
+     * Count the number of AIRuns.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {KestraRunCountArgs} args - Arguments to filter KestraRuns to count.
+     * @param {AIRunCountArgs} args - Arguments to filter AIRuns to count.
      * @example
-     * // Count the number of KestraRuns
-     * const count = await prisma.kestraRun.count({
+     * // Count the number of AIRuns
+     * const count = await prisma.aIRun.count({
      *   where: {
-     *     // ... the filter for the KestraRuns we want to count
+     *     // ... the filter for the AIRuns we want to count
      *   }
      * })
     **/
-    count<T extends KestraRunCountArgs>(
-      args?: Subset<T, KestraRunCountArgs>,
+    count<T extends AIRunCountArgs>(
+      args?: Subset<T, AIRunCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], KestraRunCountAggregateOutputType>
+          : GetScalarType<T['select'], AIRunCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a KestraRun.
+     * Allows you to perform aggregations operations on a AIRun.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {KestraRunAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {AIRunAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -6605,13 +6479,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends KestraRunAggregateArgs>(args: Subset<T, KestraRunAggregateArgs>): Prisma.PrismaPromise<GetKestraRunAggregateType<T>>
+    aggregate<T extends AIRunAggregateArgs>(args: Subset<T, AIRunAggregateArgs>): Prisma.PrismaPromise<GetAIRunAggregateType<T>>
 
     /**
-     * Group by KestraRun.
+     * Group by AIRun.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {KestraRunGroupByArgs} args - Group by arguments.
+     * @param {AIRunGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -6626,14 +6500,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends KestraRunGroupByArgs,
+      T extends AIRunGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: KestraRunGroupByArgs['orderBy'] }
-        : { orderBy?: KestraRunGroupByArgs['orderBy'] },
+        ? { orderBy: AIRunGroupByArgs['orderBy'] }
+        : { orderBy?: AIRunGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -6682,20 +6556,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, KestraRunGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetKestraRunGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, AIRunGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAIRunGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the KestraRun model
+   * Fields of the AIRun model
    */
-  readonly fields: KestraRunFieldRefs;
+  readonly fields: AIRunFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for KestraRun.
+   * The delegate class that acts as a "Promise-like" for AIRun.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__KestraRunClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__AIRunClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     agentRun<T extends AgentRunDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AgentRunDefaultArgs<ExtArgs>>): Prisma__AgentRunClient<$Result.GetResult<Prisma.$AgentRunPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
@@ -6724,1513 +6598,427 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the KestraRun model
+   * Fields of the AIRun model
    */
-  interface KestraRunFieldRefs {
-    readonly id: FieldRef<"KestraRun", 'String'>
-    readonly flowId: FieldRef<"KestraRun", 'String'>
-    readonly flowStatus: FieldRef<"KestraRun", 'String'>
-    readonly summary: FieldRef<"KestraRun", 'String'>
-    readonly evaluation: FieldRef<"KestraRun", 'Json'>
-    readonly logs: FieldRef<"KestraRun", 'Json'>
-    readonly createdAt: FieldRef<"KestraRun", 'DateTime'>
-    readonly agentRunId: FieldRef<"KestraRun", 'String'>
+  interface AIRunFieldRefs {
+    readonly id: FieldRef<"AIRun", 'String'>
+    readonly prompt: FieldRef<"AIRun", 'String'>
+    readonly response: FieldRef<"AIRun", 'String'>
+    readonly steps: FieldRef<"AIRun", 'Json'>
+    readonly files: FieldRef<"AIRun", 'Json'>
+    readonly createdAt: FieldRef<"AIRun", 'DateTime'>
+    readonly agentRunId: FieldRef<"AIRun", 'String'>
   }
     
 
   // Custom InputTypes
   /**
-   * KestraRun findUnique
+   * AIRun findUnique
    */
-  export type KestraRunFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AIRunFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the KestraRun
+     * Select specific fields to fetch from the AIRun
      */
-    select?: KestraRunSelect<ExtArgs> | null
+    select?: AIRunSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the KestraRun
+     * Omit specific fields from the AIRun
      */
-    omit?: KestraRunOmit<ExtArgs> | null
+    omit?: AIRunOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: KestraRunInclude<ExtArgs> | null
+    include?: AIRunInclude<ExtArgs> | null
     /**
-     * Filter, which KestraRun to fetch.
+     * Filter, which AIRun to fetch.
      */
-    where: KestraRunWhereUniqueInput
+    where: AIRunWhereUniqueInput
   }
 
   /**
-   * KestraRun findUniqueOrThrow
+   * AIRun findUniqueOrThrow
    */
-  export type KestraRunFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AIRunFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the KestraRun
+     * Select specific fields to fetch from the AIRun
      */
-    select?: KestraRunSelect<ExtArgs> | null
+    select?: AIRunSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the KestraRun
+     * Omit specific fields from the AIRun
      */
-    omit?: KestraRunOmit<ExtArgs> | null
+    omit?: AIRunOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: KestraRunInclude<ExtArgs> | null
+    include?: AIRunInclude<ExtArgs> | null
     /**
-     * Filter, which KestraRun to fetch.
+     * Filter, which AIRun to fetch.
      */
-    where: KestraRunWhereUniqueInput
+    where: AIRunWhereUniqueInput
   }
 
   /**
-   * KestraRun findFirst
+   * AIRun findFirst
    */
-  export type KestraRunFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AIRunFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the KestraRun
+     * Select specific fields to fetch from the AIRun
      */
-    select?: KestraRunSelect<ExtArgs> | null
+    select?: AIRunSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the KestraRun
+     * Omit specific fields from the AIRun
      */
-    omit?: KestraRunOmit<ExtArgs> | null
+    omit?: AIRunOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: KestraRunInclude<ExtArgs> | null
+    include?: AIRunInclude<ExtArgs> | null
     /**
-     * Filter, which KestraRun to fetch.
+     * Filter, which AIRun to fetch.
      */
-    where?: KestraRunWhereInput
+    where?: AIRunWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of KestraRuns to fetch.
+     * Determine the order of AIRuns to fetch.
      */
-    orderBy?: KestraRunOrderByWithRelationInput | KestraRunOrderByWithRelationInput[]
+    orderBy?: AIRunOrderByWithRelationInput | AIRunOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for KestraRuns.
+     * Sets the position for searching for AIRuns.
      */
-    cursor?: KestraRunWhereUniqueInput
+    cursor?: AIRunWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` KestraRuns from the position of the cursor.
+     * Take `±n` AIRuns from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` KestraRuns.
+     * Skip the first `n` AIRuns.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of KestraRuns.
+     * Filter by unique combinations of AIRuns.
      */
-    distinct?: KestraRunScalarFieldEnum | KestraRunScalarFieldEnum[]
+    distinct?: AIRunScalarFieldEnum | AIRunScalarFieldEnum[]
   }
 
   /**
-   * KestraRun findFirstOrThrow
+   * AIRun findFirstOrThrow
    */
-  export type KestraRunFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AIRunFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the KestraRun
+     * Select specific fields to fetch from the AIRun
      */
-    select?: KestraRunSelect<ExtArgs> | null
+    select?: AIRunSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the KestraRun
+     * Omit specific fields from the AIRun
      */
-    omit?: KestraRunOmit<ExtArgs> | null
+    omit?: AIRunOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: KestraRunInclude<ExtArgs> | null
+    include?: AIRunInclude<ExtArgs> | null
     /**
-     * Filter, which KestraRun to fetch.
+     * Filter, which AIRun to fetch.
      */
-    where?: KestraRunWhereInput
+    where?: AIRunWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of KestraRuns to fetch.
+     * Determine the order of AIRuns to fetch.
      */
-    orderBy?: KestraRunOrderByWithRelationInput | KestraRunOrderByWithRelationInput[]
+    orderBy?: AIRunOrderByWithRelationInput | AIRunOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for KestraRuns.
+     * Sets the position for searching for AIRuns.
      */
-    cursor?: KestraRunWhereUniqueInput
+    cursor?: AIRunWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` KestraRuns from the position of the cursor.
+     * Take `±n` AIRuns from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` KestraRuns.
+     * Skip the first `n` AIRuns.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of KestraRuns.
+     * Filter by unique combinations of AIRuns.
      */
-    distinct?: KestraRunScalarFieldEnum | KestraRunScalarFieldEnum[]
+    distinct?: AIRunScalarFieldEnum | AIRunScalarFieldEnum[]
   }
 
   /**
-   * KestraRun findMany
+   * AIRun findMany
    */
-  export type KestraRunFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AIRunFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the KestraRun
+     * Select specific fields to fetch from the AIRun
      */
-    select?: KestraRunSelect<ExtArgs> | null
+    select?: AIRunSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the KestraRun
+     * Omit specific fields from the AIRun
      */
-    omit?: KestraRunOmit<ExtArgs> | null
+    omit?: AIRunOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: KestraRunInclude<ExtArgs> | null
+    include?: AIRunInclude<ExtArgs> | null
     /**
-     * Filter, which KestraRuns to fetch.
+     * Filter, which AIRuns to fetch.
      */
-    where?: KestraRunWhereInput
+    where?: AIRunWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of KestraRuns to fetch.
+     * Determine the order of AIRuns to fetch.
      */
-    orderBy?: KestraRunOrderByWithRelationInput | KestraRunOrderByWithRelationInput[]
+    orderBy?: AIRunOrderByWithRelationInput | AIRunOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing KestraRuns.
+     * Sets the position for listing AIRuns.
      */
-    cursor?: KestraRunWhereUniqueInput
+    cursor?: AIRunWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` KestraRuns from the position of the cursor.
+     * Take `±n` AIRuns from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` KestraRuns.
+     * Skip the first `n` AIRuns.
      */
     skip?: number
-    distinct?: KestraRunScalarFieldEnum | KestraRunScalarFieldEnum[]
+    distinct?: AIRunScalarFieldEnum | AIRunScalarFieldEnum[]
   }
 
   /**
-   * KestraRun create
+   * AIRun create
    */
-  export type KestraRunCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AIRunCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the KestraRun
+     * Select specific fields to fetch from the AIRun
      */
-    select?: KestraRunSelect<ExtArgs> | null
+    select?: AIRunSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the KestraRun
+     * Omit specific fields from the AIRun
      */
-    omit?: KestraRunOmit<ExtArgs> | null
+    omit?: AIRunOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: KestraRunInclude<ExtArgs> | null
+    include?: AIRunInclude<ExtArgs> | null
     /**
-     * The data needed to create a KestraRun.
+     * The data needed to create a AIRun.
      */
-    data: XOR<KestraRunCreateInput, KestraRunUncheckedCreateInput>
+    data: XOR<AIRunCreateInput, AIRunUncheckedCreateInput>
   }
 
   /**
-   * KestraRun createMany
+   * AIRun createMany
    */
-  export type KestraRunCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AIRunCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many KestraRuns.
+     * The data used to create many AIRuns.
      */
-    data: KestraRunCreateManyInput | KestraRunCreateManyInput[]
+    data: AIRunCreateManyInput | AIRunCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * KestraRun createManyAndReturn
+   * AIRun createManyAndReturn
    */
-  export type KestraRunCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AIRunCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the KestraRun
+     * Select specific fields to fetch from the AIRun
      */
-    select?: KestraRunSelectCreateManyAndReturn<ExtArgs> | null
+    select?: AIRunSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the KestraRun
+     * Omit specific fields from the AIRun
      */
-    omit?: KestraRunOmit<ExtArgs> | null
+    omit?: AIRunOmit<ExtArgs> | null
     /**
-     * The data used to create many KestraRuns.
+     * The data used to create many AIRuns.
      */
-    data: KestraRunCreateManyInput | KestraRunCreateManyInput[]
+    data: AIRunCreateManyInput | AIRunCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: KestraRunIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: AIRunIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * KestraRun update
+   * AIRun update
    */
-  export type KestraRunUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AIRunUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the KestraRun
+     * Select specific fields to fetch from the AIRun
      */
-    select?: KestraRunSelect<ExtArgs> | null
+    select?: AIRunSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the KestraRun
+     * Omit specific fields from the AIRun
      */
-    omit?: KestraRunOmit<ExtArgs> | null
+    omit?: AIRunOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: KestraRunInclude<ExtArgs> | null
+    include?: AIRunInclude<ExtArgs> | null
     /**
-     * The data needed to update a KestraRun.
+     * The data needed to update a AIRun.
      */
-    data: XOR<KestraRunUpdateInput, KestraRunUncheckedUpdateInput>
+    data: XOR<AIRunUpdateInput, AIRunUncheckedUpdateInput>
     /**
-     * Choose, which KestraRun to update.
+     * Choose, which AIRun to update.
      */
-    where: KestraRunWhereUniqueInput
+    where: AIRunWhereUniqueInput
   }
 
   /**
-   * KestraRun updateMany
+   * AIRun updateMany
    */
-  export type KestraRunUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AIRunUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update KestraRuns.
+     * The data used to update AIRuns.
      */
-    data: XOR<KestraRunUpdateManyMutationInput, KestraRunUncheckedUpdateManyInput>
+    data: XOR<AIRunUpdateManyMutationInput, AIRunUncheckedUpdateManyInput>
     /**
-     * Filter which KestraRuns to update
+     * Filter which AIRuns to update
      */
-    where?: KestraRunWhereInput
+    where?: AIRunWhereInput
     /**
-     * Limit how many KestraRuns to update.
+     * Limit how many AIRuns to update.
      */
     limit?: number
   }
 
   /**
-   * KestraRun updateManyAndReturn
+   * AIRun updateManyAndReturn
    */
-  export type KestraRunUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AIRunUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the KestraRun
+     * Select specific fields to fetch from the AIRun
      */
-    select?: KestraRunSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: AIRunSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the KestraRun
+     * Omit specific fields from the AIRun
      */
-    omit?: KestraRunOmit<ExtArgs> | null
+    omit?: AIRunOmit<ExtArgs> | null
     /**
-     * The data used to update KestraRuns.
+     * The data used to update AIRuns.
      */
-    data: XOR<KestraRunUpdateManyMutationInput, KestraRunUncheckedUpdateManyInput>
+    data: XOR<AIRunUpdateManyMutationInput, AIRunUncheckedUpdateManyInput>
     /**
-     * Filter which KestraRuns to update
+     * Filter which AIRuns to update
      */
-    where?: KestraRunWhereInput
+    where?: AIRunWhereInput
     /**
-     * Limit how many KestraRuns to update.
+     * Limit how many AIRuns to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: KestraRunIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: AIRunIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * KestraRun upsert
+   * AIRun upsert
    */
-  export type KestraRunUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AIRunUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the KestraRun
+     * Select specific fields to fetch from the AIRun
      */
-    select?: KestraRunSelect<ExtArgs> | null
+    select?: AIRunSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the KestraRun
+     * Omit specific fields from the AIRun
      */
-    omit?: KestraRunOmit<ExtArgs> | null
+    omit?: AIRunOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: KestraRunInclude<ExtArgs> | null
+    include?: AIRunInclude<ExtArgs> | null
     /**
-     * The filter to search for the KestraRun to update in case it exists.
+     * The filter to search for the AIRun to update in case it exists.
      */
-    where: KestraRunWhereUniqueInput
+    where: AIRunWhereUniqueInput
     /**
-     * In case the KestraRun found by the `where` argument doesn't exist, create a new KestraRun with this data.
+     * In case the AIRun found by the `where` argument doesn't exist, create a new AIRun with this data.
      */
-    create: XOR<KestraRunCreateInput, KestraRunUncheckedCreateInput>
+    create: XOR<AIRunCreateInput, AIRunUncheckedCreateInput>
     /**
-     * In case the KestraRun was found with the provided `where` argument, update it with this data.
+     * In case the AIRun was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<KestraRunUpdateInput, KestraRunUncheckedUpdateInput>
+    update: XOR<AIRunUpdateInput, AIRunUncheckedUpdateInput>
   }
 
   /**
-   * KestraRun delete
+   * AIRun delete
    */
-  export type KestraRunDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AIRunDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the KestraRun
+     * Select specific fields to fetch from the AIRun
      */
-    select?: KestraRunSelect<ExtArgs> | null
+    select?: AIRunSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the KestraRun
+     * Omit specific fields from the AIRun
      */
-    omit?: KestraRunOmit<ExtArgs> | null
+    omit?: AIRunOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: KestraRunInclude<ExtArgs> | null
+    include?: AIRunInclude<ExtArgs> | null
     /**
-     * Filter which KestraRun to delete.
+     * Filter which AIRun to delete.
      */
-    where: KestraRunWhereUniqueInput
+    where: AIRunWhereUniqueInput
   }
 
   /**
-   * KestraRun deleteMany
+   * AIRun deleteMany
    */
-  export type KestraRunDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AIRunDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which KestraRuns to delete
+     * Filter which AIRuns to delete
      */
-    where?: KestraRunWhereInput
+    where?: AIRunWhereInput
     /**
-     * Limit how many KestraRuns to delete.
+     * Limit how many AIRuns to delete.
      */
     limit?: number
   }
 
   /**
-   * KestraRun without action
+   * AIRun without action
    */
-  export type KestraRunDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AIRunDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the KestraRun
+     * Select specific fields to fetch from the AIRun
      */
-    select?: KestraRunSelect<ExtArgs> | null
+    select?: AIRunSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the KestraRun
+     * Omit specific fields from the AIRun
      */
-    omit?: KestraRunOmit<ExtArgs> | null
+    omit?: AIRunOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: KestraRunInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model ClineRun
-   */
-
-  export type AggregateClineRun = {
-    _count: ClineRunCountAggregateOutputType | null
-    _min: ClineRunMinAggregateOutputType | null
-    _max: ClineRunMaxAggregateOutputType | null
-  }
-
-  export type ClineRunMinAggregateOutputType = {
-    id: string | null
-    patch: string | null
-    reasoning: string | null
-    createdAt: Date | null
-    agentRunId: string | null
-  }
-
-  export type ClineRunMaxAggregateOutputType = {
-    id: string | null
-    patch: string | null
-    reasoning: string | null
-    createdAt: Date | null
-    agentRunId: string | null
-  }
-
-  export type ClineRunCountAggregateOutputType = {
-    id: number
-    plan: number
-    output: number
-    patch: number
-    reasoning: number
-    logs: number
-    createdAt: number
-    agentRunId: number
-    _all: number
-  }
-
-
-  export type ClineRunMinAggregateInputType = {
-    id?: true
-    patch?: true
-    reasoning?: true
-    createdAt?: true
-    agentRunId?: true
-  }
-
-  export type ClineRunMaxAggregateInputType = {
-    id?: true
-    patch?: true
-    reasoning?: true
-    createdAt?: true
-    agentRunId?: true
-  }
-
-  export type ClineRunCountAggregateInputType = {
-    id?: true
-    plan?: true
-    output?: true
-    patch?: true
-    reasoning?: true
-    logs?: true
-    createdAt?: true
-    agentRunId?: true
-    _all?: true
-  }
-
-  export type ClineRunAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which ClineRun to aggregate.
-     */
-    where?: ClineRunWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ClineRuns to fetch.
-     */
-    orderBy?: ClineRunOrderByWithRelationInput | ClineRunOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: ClineRunWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ClineRuns from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ClineRuns.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned ClineRuns
-    **/
-    _count?: true | ClineRunCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: ClineRunMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: ClineRunMaxAggregateInputType
-  }
-
-  export type GetClineRunAggregateType<T extends ClineRunAggregateArgs> = {
-        [P in keyof T & keyof AggregateClineRun]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateClineRun[P]>
-      : GetScalarType<T[P], AggregateClineRun[P]>
-  }
-
-
-
-
-  export type ClineRunGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ClineRunWhereInput
-    orderBy?: ClineRunOrderByWithAggregationInput | ClineRunOrderByWithAggregationInput[]
-    by: ClineRunScalarFieldEnum[] | ClineRunScalarFieldEnum
-    having?: ClineRunScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: ClineRunCountAggregateInputType | true
-    _min?: ClineRunMinAggregateInputType
-    _max?: ClineRunMaxAggregateInputType
-  }
-
-  export type ClineRunGroupByOutputType = {
-    id: string
-    plan: JsonValue | null
-    output: JsonValue | null
-    patch: string | null
-    reasoning: string | null
-    logs: JsonValue | null
-    createdAt: Date
-    agentRunId: string
-    _count: ClineRunCountAggregateOutputType | null
-    _min: ClineRunMinAggregateOutputType | null
-    _max: ClineRunMaxAggregateOutputType | null
-  }
-
-  type GetClineRunGroupByPayload<T extends ClineRunGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<ClineRunGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof ClineRunGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], ClineRunGroupByOutputType[P]>
-            : GetScalarType<T[P], ClineRunGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type ClineRunSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    plan?: boolean
-    output?: boolean
-    patch?: boolean
-    reasoning?: boolean
-    logs?: boolean
-    createdAt?: boolean
-    agentRunId?: boolean
-    agentRun?: boolean | AgentRunDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["clineRun"]>
-
-  export type ClineRunSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    plan?: boolean
-    output?: boolean
-    patch?: boolean
-    reasoning?: boolean
-    logs?: boolean
-    createdAt?: boolean
-    agentRunId?: boolean
-    agentRun?: boolean | AgentRunDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["clineRun"]>
-
-  export type ClineRunSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    plan?: boolean
-    output?: boolean
-    patch?: boolean
-    reasoning?: boolean
-    logs?: boolean
-    createdAt?: boolean
-    agentRunId?: boolean
-    agentRun?: boolean | AgentRunDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["clineRun"]>
-
-  export type ClineRunSelectScalar = {
-    id?: boolean
-    plan?: boolean
-    output?: boolean
-    patch?: boolean
-    reasoning?: boolean
-    logs?: boolean
-    createdAt?: boolean
-    agentRunId?: boolean
-  }
-
-  export type ClineRunOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "plan" | "output" | "patch" | "reasoning" | "logs" | "createdAt" | "agentRunId", ExtArgs["result"]["clineRun"]>
-  export type ClineRunInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    agentRun?: boolean | AgentRunDefaultArgs<ExtArgs>
-  }
-  export type ClineRunIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    agentRun?: boolean | AgentRunDefaultArgs<ExtArgs>
-  }
-  export type ClineRunIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    agentRun?: boolean | AgentRunDefaultArgs<ExtArgs>
-  }
-
-  export type $ClineRunPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "ClineRun"
-    objects: {
-      agentRun: Prisma.$AgentRunPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      plan: Prisma.JsonValue | null
-      output: Prisma.JsonValue | null
-      patch: string | null
-      reasoning: string | null
-      logs: Prisma.JsonValue | null
-      createdAt: Date
-      agentRunId: string
-    }, ExtArgs["result"]["clineRun"]>
-    composites: {}
-  }
-
-  type ClineRunGetPayload<S extends boolean | null | undefined | ClineRunDefaultArgs> = $Result.GetResult<Prisma.$ClineRunPayload, S>
-
-  type ClineRunCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<ClineRunFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: ClineRunCountAggregateInputType | true
-    }
-
-  export interface ClineRunDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ClineRun'], meta: { name: 'ClineRun' } }
-    /**
-     * Find zero or one ClineRun that matches the filter.
-     * @param {ClineRunFindUniqueArgs} args - Arguments to find a ClineRun
-     * @example
-     * // Get one ClineRun
-     * const clineRun = await prisma.clineRun.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends ClineRunFindUniqueArgs>(args: SelectSubset<T, ClineRunFindUniqueArgs<ExtArgs>>): Prisma__ClineRunClient<$Result.GetResult<Prisma.$ClineRunPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one ClineRun that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {ClineRunFindUniqueOrThrowArgs} args - Arguments to find a ClineRun
-     * @example
-     * // Get one ClineRun
-     * const clineRun = await prisma.clineRun.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends ClineRunFindUniqueOrThrowArgs>(args: SelectSubset<T, ClineRunFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ClineRunClient<$Result.GetResult<Prisma.$ClineRunPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first ClineRun that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ClineRunFindFirstArgs} args - Arguments to find a ClineRun
-     * @example
-     * // Get one ClineRun
-     * const clineRun = await prisma.clineRun.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends ClineRunFindFirstArgs>(args?: SelectSubset<T, ClineRunFindFirstArgs<ExtArgs>>): Prisma__ClineRunClient<$Result.GetResult<Prisma.$ClineRunPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first ClineRun that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ClineRunFindFirstOrThrowArgs} args - Arguments to find a ClineRun
-     * @example
-     * // Get one ClineRun
-     * const clineRun = await prisma.clineRun.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends ClineRunFindFirstOrThrowArgs>(args?: SelectSubset<T, ClineRunFindFirstOrThrowArgs<ExtArgs>>): Prisma__ClineRunClient<$Result.GetResult<Prisma.$ClineRunPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more ClineRuns that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ClineRunFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all ClineRuns
-     * const clineRuns = await prisma.clineRun.findMany()
-     * 
-     * // Get first 10 ClineRuns
-     * const clineRuns = await prisma.clineRun.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const clineRunWithIdOnly = await prisma.clineRun.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends ClineRunFindManyArgs>(args?: SelectSubset<T, ClineRunFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClineRunPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a ClineRun.
-     * @param {ClineRunCreateArgs} args - Arguments to create a ClineRun.
-     * @example
-     * // Create one ClineRun
-     * const ClineRun = await prisma.clineRun.create({
-     *   data: {
-     *     // ... data to create a ClineRun
-     *   }
-     * })
-     * 
-     */
-    create<T extends ClineRunCreateArgs>(args: SelectSubset<T, ClineRunCreateArgs<ExtArgs>>): Prisma__ClineRunClient<$Result.GetResult<Prisma.$ClineRunPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many ClineRuns.
-     * @param {ClineRunCreateManyArgs} args - Arguments to create many ClineRuns.
-     * @example
-     * // Create many ClineRuns
-     * const clineRun = await prisma.clineRun.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends ClineRunCreateManyArgs>(args?: SelectSubset<T, ClineRunCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many ClineRuns and returns the data saved in the database.
-     * @param {ClineRunCreateManyAndReturnArgs} args - Arguments to create many ClineRuns.
-     * @example
-     * // Create many ClineRuns
-     * const clineRun = await prisma.clineRun.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many ClineRuns and only return the `id`
-     * const clineRunWithIdOnly = await prisma.clineRun.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends ClineRunCreateManyAndReturnArgs>(args?: SelectSubset<T, ClineRunCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClineRunPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a ClineRun.
-     * @param {ClineRunDeleteArgs} args - Arguments to delete one ClineRun.
-     * @example
-     * // Delete one ClineRun
-     * const ClineRun = await prisma.clineRun.delete({
-     *   where: {
-     *     // ... filter to delete one ClineRun
-     *   }
-     * })
-     * 
-     */
-    delete<T extends ClineRunDeleteArgs>(args: SelectSubset<T, ClineRunDeleteArgs<ExtArgs>>): Prisma__ClineRunClient<$Result.GetResult<Prisma.$ClineRunPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one ClineRun.
-     * @param {ClineRunUpdateArgs} args - Arguments to update one ClineRun.
-     * @example
-     * // Update one ClineRun
-     * const clineRun = await prisma.clineRun.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends ClineRunUpdateArgs>(args: SelectSubset<T, ClineRunUpdateArgs<ExtArgs>>): Prisma__ClineRunClient<$Result.GetResult<Prisma.$ClineRunPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more ClineRuns.
-     * @param {ClineRunDeleteManyArgs} args - Arguments to filter ClineRuns to delete.
-     * @example
-     * // Delete a few ClineRuns
-     * const { count } = await prisma.clineRun.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends ClineRunDeleteManyArgs>(args?: SelectSubset<T, ClineRunDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more ClineRuns.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ClineRunUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many ClineRuns
-     * const clineRun = await prisma.clineRun.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends ClineRunUpdateManyArgs>(args: SelectSubset<T, ClineRunUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more ClineRuns and returns the data updated in the database.
-     * @param {ClineRunUpdateManyAndReturnArgs} args - Arguments to update many ClineRuns.
-     * @example
-     * // Update many ClineRuns
-     * const clineRun = await prisma.clineRun.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more ClineRuns and only return the `id`
-     * const clineRunWithIdOnly = await prisma.clineRun.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends ClineRunUpdateManyAndReturnArgs>(args: SelectSubset<T, ClineRunUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClineRunPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one ClineRun.
-     * @param {ClineRunUpsertArgs} args - Arguments to update or create a ClineRun.
-     * @example
-     * // Update or create a ClineRun
-     * const clineRun = await prisma.clineRun.upsert({
-     *   create: {
-     *     // ... data to create a ClineRun
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the ClineRun we want to update
-     *   }
-     * })
-     */
-    upsert<T extends ClineRunUpsertArgs>(args: SelectSubset<T, ClineRunUpsertArgs<ExtArgs>>): Prisma__ClineRunClient<$Result.GetResult<Prisma.$ClineRunPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of ClineRuns.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ClineRunCountArgs} args - Arguments to filter ClineRuns to count.
-     * @example
-     * // Count the number of ClineRuns
-     * const count = await prisma.clineRun.count({
-     *   where: {
-     *     // ... the filter for the ClineRuns we want to count
-     *   }
-     * })
-    **/
-    count<T extends ClineRunCountArgs>(
-      args?: Subset<T, ClineRunCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], ClineRunCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a ClineRun.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ClineRunAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends ClineRunAggregateArgs>(args: Subset<T, ClineRunAggregateArgs>): Prisma.PrismaPromise<GetClineRunAggregateType<T>>
-
-    /**
-     * Group by ClineRun.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ClineRunGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends ClineRunGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ClineRunGroupByArgs['orderBy'] }
-        : { orderBy?: ClineRunGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, ClineRunGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetClineRunGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the ClineRun model
-   */
-  readonly fields: ClineRunFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for ClineRun.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__ClineRunClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    agentRun<T extends AgentRunDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AgentRunDefaultArgs<ExtArgs>>): Prisma__AgentRunClient<$Result.GetResult<Prisma.$AgentRunPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the ClineRun model
-   */
-  interface ClineRunFieldRefs {
-    readonly id: FieldRef<"ClineRun", 'String'>
-    readonly plan: FieldRef<"ClineRun", 'Json'>
-    readonly output: FieldRef<"ClineRun", 'Json'>
-    readonly patch: FieldRef<"ClineRun", 'String'>
-    readonly reasoning: FieldRef<"ClineRun", 'String'>
-    readonly logs: FieldRef<"ClineRun", 'Json'>
-    readonly createdAt: FieldRef<"ClineRun", 'DateTime'>
-    readonly agentRunId: FieldRef<"ClineRun", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * ClineRun findUnique
-   */
-  export type ClineRunFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ClineRun
-     */
-    select?: ClineRunSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ClineRun
-     */
-    omit?: ClineRunOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ClineRunInclude<ExtArgs> | null
-    /**
-     * Filter, which ClineRun to fetch.
-     */
-    where: ClineRunWhereUniqueInput
-  }
-
-  /**
-   * ClineRun findUniqueOrThrow
-   */
-  export type ClineRunFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ClineRun
-     */
-    select?: ClineRunSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ClineRun
-     */
-    omit?: ClineRunOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ClineRunInclude<ExtArgs> | null
-    /**
-     * Filter, which ClineRun to fetch.
-     */
-    where: ClineRunWhereUniqueInput
-  }
-
-  /**
-   * ClineRun findFirst
-   */
-  export type ClineRunFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ClineRun
-     */
-    select?: ClineRunSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ClineRun
-     */
-    omit?: ClineRunOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ClineRunInclude<ExtArgs> | null
-    /**
-     * Filter, which ClineRun to fetch.
-     */
-    where?: ClineRunWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ClineRuns to fetch.
-     */
-    orderBy?: ClineRunOrderByWithRelationInput | ClineRunOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for ClineRuns.
-     */
-    cursor?: ClineRunWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ClineRuns from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ClineRuns.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of ClineRuns.
-     */
-    distinct?: ClineRunScalarFieldEnum | ClineRunScalarFieldEnum[]
-  }
-
-  /**
-   * ClineRun findFirstOrThrow
-   */
-  export type ClineRunFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ClineRun
-     */
-    select?: ClineRunSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ClineRun
-     */
-    omit?: ClineRunOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ClineRunInclude<ExtArgs> | null
-    /**
-     * Filter, which ClineRun to fetch.
-     */
-    where?: ClineRunWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ClineRuns to fetch.
-     */
-    orderBy?: ClineRunOrderByWithRelationInput | ClineRunOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for ClineRuns.
-     */
-    cursor?: ClineRunWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ClineRuns from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ClineRuns.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of ClineRuns.
-     */
-    distinct?: ClineRunScalarFieldEnum | ClineRunScalarFieldEnum[]
-  }
-
-  /**
-   * ClineRun findMany
-   */
-  export type ClineRunFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ClineRun
-     */
-    select?: ClineRunSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ClineRun
-     */
-    omit?: ClineRunOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ClineRunInclude<ExtArgs> | null
-    /**
-     * Filter, which ClineRuns to fetch.
-     */
-    where?: ClineRunWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ClineRuns to fetch.
-     */
-    orderBy?: ClineRunOrderByWithRelationInput | ClineRunOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing ClineRuns.
-     */
-    cursor?: ClineRunWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ClineRuns from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ClineRuns.
-     */
-    skip?: number
-    distinct?: ClineRunScalarFieldEnum | ClineRunScalarFieldEnum[]
-  }
-
-  /**
-   * ClineRun create
-   */
-  export type ClineRunCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ClineRun
-     */
-    select?: ClineRunSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ClineRun
-     */
-    omit?: ClineRunOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ClineRunInclude<ExtArgs> | null
-    /**
-     * The data needed to create a ClineRun.
-     */
-    data: XOR<ClineRunCreateInput, ClineRunUncheckedCreateInput>
-  }
-
-  /**
-   * ClineRun createMany
-   */
-  export type ClineRunCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many ClineRuns.
-     */
-    data: ClineRunCreateManyInput | ClineRunCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * ClineRun createManyAndReturn
-   */
-  export type ClineRunCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ClineRun
-     */
-    select?: ClineRunSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the ClineRun
-     */
-    omit?: ClineRunOmit<ExtArgs> | null
-    /**
-     * The data used to create many ClineRuns.
-     */
-    data: ClineRunCreateManyInput | ClineRunCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ClineRunIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * ClineRun update
-   */
-  export type ClineRunUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ClineRun
-     */
-    select?: ClineRunSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ClineRun
-     */
-    omit?: ClineRunOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ClineRunInclude<ExtArgs> | null
-    /**
-     * The data needed to update a ClineRun.
-     */
-    data: XOR<ClineRunUpdateInput, ClineRunUncheckedUpdateInput>
-    /**
-     * Choose, which ClineRun to update.
-     */
-    where: ClineRunWhereUniqueInput
-  }
-
-  /**
-   * ClineRun updateMany
-   */
-  export type ClineRunUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update ClineRuns.
-     */
-    data: XOR<ClineRunUpdateManyMutationInput, ClineRunUncheckedUpdateManyInput>
-    /**
-     * Filter which ClineRuns to update
-     */
-    where?: ClineRunWhereInput
-    /**
-     * Limit how many ClineRuns to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * ClineRun updateManyAndReturn
-   */
-  export type ClineRunUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ClineRun
-     */
-    select?: ClineRunSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the ClineRun
-     */
-    omit?: ClineRunOmit<ExtArgs> | null
-    /**
-     * The data used to update ClineRuns.
-     */
-    data: XOR<ClineRunUpdateManyMutationInput, ClineRunUncheckedUpdateManyInput>
-    /**
-     * Filter which ClineRuns to update
-     */
-    where?: ClineRunWhereInput
-    /**
-     * Limit how many ClineRuns to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ClineRunIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * ClineRun upsert
-   */
-  export type ClineRunUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ClineRun
-     */
-    select?: ClineRunSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ClineRun
-     */
-    omit?: ClineRunOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ClineRunInclude<ExtArgs> | null
-    /**
-     * The filter to search for the ClineRun to update in case it exists.
-     */
-    where: ClineRunWhereUniqueInput
-    /**
-     * In case the ClineRun found by the `where` argument doesn't exist, create a new ClineRun with this data.
-     */
-    create: XOR<ClineRunCreateInput, ClineRunUncheckedCreateInput>
-    /**
-     * In case the ClineRun was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<ClineRunUpdateInput, ClineRunUncheckedUpdateInput>
-  }
-
-  /**
-   * ClineRun delete
-   */
-  export type ClineRunDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ClineRun
-     */
-    select?: ClineRunSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ClineRun
-     */
-    omit?: ClineRunOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ClineRunInclude<ExtArgs> | null
-    /**
-     * Filter which ClineRun to delete.
-     */
-    where: ClineRunWhereUniqueInput
-  }
-
-  /**
-   * ClineRun deleteMany
-   */
-  export type ClineRunDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which ClineRuns to delete
-     */
-    where?: ClineRunWhereInput
-    /**
-     * Limit how many ClineRuns to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * ClineRun without action
-   */
-  export type ClineRunDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ClineRun
-     */
-    select?: ClineRunSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ClineRun
-     */
-    omit?: ClineRunOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ClineRunInclude<ExtArgs> | null
+    include?: AIRunInclude<ExtArgs> | null
   }
 
 
@@ -8303,32 +7091,17 @@ export namespace Prisma {
   export type AgentRunScalarFieldEnum = (typeof AgentRunScalarFieldEnum)[keyof typeof AgentRunScalarFieldEnum]
 
 
-  export const KestraRunScalarFieldEnum: {
+  export const AIRunScalarFieldEnum: {
     id: 'id',
-    flowId: 'flowId',
-    flowStatus: 'flowStatus',
-    summary: 'summary',
-    evaluation: 'evaluation',
-    logs: 'logs',
+    prompt: 'prompt',
+    response: 'response',
+    steps: 'steps',
+    files: 'files',
     createdAt: 'createdAt',
     agentRunId: 'agentRunId'
   };
 
-  export type KestraRunScalarFieldEnum = (typeof KestraRunScalarFieldEnum)[keyof typeof KestraRunScalarFieldEnum]
-
-
-  export const ClineRunScalarFieldEnum: {
-    id: 'id',
-    plan: 'plan',
-    output: 'output',
-    patch: 'patch',
-    reasoning: 'reasoning',
-    logs: 'logs',
-    createdAt: 'createdAt',
-    agentRunId: 'agentRunId'
-  };
-
-  export type ClineRunScalarFieldEnum = (typeof ClineRunScalarFieldEnum)[keyof typeof ClineRunScalarFieldEnum]
+  export type AIRunScalarFieldEnum = (typeof AIRunScalarFieldEnum)[keyof typeof AIRunScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -8684,8 +7457,7 @@ export namespace Prisma {
     issue?: XOR<IssueNullableScalarRelationFilter, IssueWhereInput> | null
     project?: XOR<ReposScalarRelationFilter, ReposWhereInput>
     triggeredBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    kestraRun?: XOR<KestraRunNullableScalarRelationFilter, KestraRunWhereInput> | null
-    clineRun?: XOR<ClineRunNullableScalarRelationFilter, ClineRunWhereInput> | null
+    aiRun?: XOR<AIRunNullableScalarRelationFilter, AIRunWhereInput> | null
   }
 
   export type AgentRunOrderByWithRelationInput = {
@@ -8700,8 +7472,7 @@ export namespace Prisma {
     issue?: IssueOrderByWithRelationInput
     project?: ReposOrderByWithRelationInput
     triggeredBy?: UserOrderByWithRelationInput
-    kestraRun?: KestraRunOrderByWithRelationInput
-    clineRun?: ClineRunOrderByWithRelationInput
+    aiRun?: AIRunOrderByWithRelationInput
   }
 
   export type AgentRunWhereUniqueInput = Prisma.AtLeast<{
@@ -8719,8 +7490,7 @@ export namespace Prisma {
     issue?: XOR<IssueNullableScalarRelationFilter, IssueWhereInput> | null
     project?: XOR<ReposScalarRelationFilter, ReposWhereInput>
     triggeredBy?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
-    kestraRun?: XOR<KestraRunNullableScalarRelationFilter, KestraRunWhereInput> | null
-    clineRun?: XOR<ClineRunNullableScalarRelationFilter, ClineRunWhereInput> | null
+    aiRun?: XOR<AIRunNullableScalarRelationFilter, AIRunWhereInput> | null
   }, "id">
 
   export type AgentRunOrderByWithAggregationInput = {
@@ -8751,144 +7521,69 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"AgentRun"> | Date | string
   }
 
-  export type KestraRunWhereInput = {
-    AND?: KestraRunWhereInput | KestraRunWhereInput[]
-    OR?: KestraRunWhereInput[]
-    NOT?: KestraRunWhereInput | KestraRunWhereInput[]
-    id?: StringFilter<"KestraRun"> | string
-    flowId?: StringNullableFilter<"KestraRun"> | string | null
-    flowStatus?: StringNullableFilter<"KestraRun"> | string | null
-    summary?: StringNullableFilter<"KestraRun"> | string | null
-    evaluation?: JsonNullableFilter<"KestraRun">
-    logs?: JsonNullableFilter<"KestraRun">
-    createdAt?: DateTimeFilter<"KestraRun"> | Date | string
-    agentRunId?: StringFilter<"KestraRun"> | string
+  export type AIRunWhereInput = {
+    AND?: AIRunWhereInput | AIRunWhereInput[]
+    OR?: AIRunWhereInput[]
+    NOT?: AIRunWhereInput | AIRunWhereInput[]
+    id?: StringFilter<"AIRun"> | string
+    prompt?: StringFilter<"AIRun"> | string
+    response?: StringFilter<"AIRun"> | string
+    steps?: JsonNullableFilter<"AIRun">
+    files?: JsonNullableFilter<"AIRun">
+    createdAt?: DateTimeFilter<"AIRun"> | Date | string
+    agentRunId?: StringFilter<"AIRun"> | string
     agentRun?: XOR<AgentRunScalarRelationFilter, AgentRunWhereInput>
   }
 
-  export type KestraRunOrderByWithRelationInput = {
+  export type AIRunOrderByWithRelationInput = {
     id?: SortOrder
-    flowId?: SortOrderInput | SortOrder
-    flowStatus?: SortOrderInput | SortOrder
-    summary?: SortOrderInput | SortOrder
-    evaluation?: SortOrderInput | SortOrder
-    logs?: SortOrderInput | SortOrder
+    prompt?: SortOrder
+    response?: SortOrder
+    steps?: SortOrderInput | SortOrder
+    files?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     agentRunId?: SortOrder
     agentRun?: AgentRunOrderByWithRelationInput
   }
 
-  export type KestraRunWhereUniqueInput = Prisma.AtLeast<{
+  export type AIRunWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     agentRunId?: string
-    AND?: KestraRunWhereInput | KestraRunWhereInput[]
-    OR?: KestraRunWhereInput[]
-    NOT?: KestraRunWhereInput | KestraRunWhereInput[]
-    flowId?: StringNullableFilter<"KestraRun"> | string | null
-    flowStatus?: StringNullableFilter<"KestraRun"> | string | null
-    summary?: StringNullableFilter<"KestraRun"> | string | null
-    evaluation?: JsonNullableFilter<"KestraRun">
-    logs?: JsonNullableFilter<"KestraRun">
-    createdAt?: DateTimeFilter<"KestraRun"> | Date | string
+    AND?: AIRunWhereInput | AIRunWhereInput[]
+    OR?: AIRunWhereInput[]
+    NOT?: AIRunWhereInput | AIRunWhereInput[]
+    prompt?: StringFilter<"AIRun"> | string
+    response?: StringFilter<"AIRun"> | string
+    steps?: JsonNullableFilter<"AIRun">
+    files?: JsonNullableFilter<"AIRun">
+    createdAt?: DateTimeFilter<"AIRun"> | Date | string
     agentRun?: XOR<AgentRunScalarRelationFilter, AgentRunWhereInput>
   }, "id" | "agentRunId">
 
-  export type KestraRunOrderByWithAggregationInput = {
+  export type AIRunOrderByWithAggregationInput = {
     id?: SortOrder
-    flowId?: SortOrderInput | SortOrder
-    flowStatus?: SortOrderInput | SortOrder
-    summary?: SortOrderInput | SortOrder
-    evaluation?: SortOrderInput | SortOrder
-    logs?: SortOrderInput | SortOrder
+    prompt?: SortOrder
+    response?: SortOrder
+    steps?: SortOrderInput | SortOrder
+    files?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     agentRunId?: SortOrder
-    _count?: KestraRunCountOrderByAggregateInput
-    _max?: KestraRunMaxOrderByAggregateInput
-    _min?: KestraRunMinOrderByAggregateInput
+    _count?: AIRunCountOrderByAggregateInput
+    _max?: AIRunMaxOrderByAggregateInput
+    _min?: AIRunMinOrderByAggregateInput
   }
 
-  export type KestraRunScalarWhereWithAggregatesInput = {
-    AND?: KestraRunScalarWhereWithAggregatesInput | KestraRunScalarWhereWithAggregatesInput[]
-    OR?: KestraRunScalarWhereWithAggregatesInput[]
-    NOT?: KestraRunScalarWhereWithAggregatesInput | KestraRunScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"KestraRun"> | string
-    flowId?: StringNullableWithAggregatesFilter<"KestraRun"> | string | null
-    flowStatus?: StringNullableWithAggregatesFilter<"KestraRun"> | string | null
-    summary?: StringNullableWithAggregatesFilter<"KestraRun"> | string | null
-    evaluation?: JsonNullableWithAggregatesFilter<"KestraRun">
-    logs?: JsonNullableWithAggregatesFilter<"KestraRun">
-    createdAt?: DateTimeWithAggregatesFilter<"KestraRun"> | Date | string
-    agentRunId?: StringWithAggregatesFilter<"KestraRun"> | string
-  }
-
-  export type ClineRunWhereInput = {
-    AND?: ClineRunWhereInput | ClineRunWhereInput[]
-    OR?: ClineRunWhereInput[]
-    NOT?: ClineRunWhereInput | ClineRunWhereInput[]
-    id?: StringFilter<"ClineRun"> | string
-    plan?: JsonNullableFilter<"ClineRun">
-    output?: JsonNullableFilter<"ClineRun">
-    patch?: StringNullableFilter<"ClineRun"> | string | null
-    reasoning?: StringNullableFilter<"ClineRun"> | string | null
-    logs?: JsonNullableFilter<"ClineRun">
-    createdAt?: DateTimeFilter<"ClineRun"> | Date | string
-    agentRunId?: StringFilter<"ClineRun"> | string
-    agentRun?: XOR<AgentRunScalarRelationFilter, AgentRunWhereInput>
-  }
-
-  export type ClineRunOrderByWithRelationInput = {
-    id?: SortOrder
-    plan?: SortOrderInput | SortOrder
-    output?: SortOrderInput | SortOrder
-    patch?: SortOrderInput | SortOrder
-    reasoning?: SortOrderInput | SortOrder
-    logs?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
-    agentRunId?: SortOrder
-    agentRun?: AgentRunOrderByWithRelationInput
-  }
-
-  export type ClineRunWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    agentRunId?: string
-    AND?: ClineRunWhereInput | ClineRunWhereInput[]
-    OR?: ClineRunWhereInput[]
-    NOT?: ClineRunWhereInput | ClineRunWhereInput[]
-    plan?: JsonNullableFilter<"ClineRun">
-    output?: JsonNullableFilter<"ClineRun">
-    patch?: StringNullableFilter<"ClineRun"> | string | null
-    reasoning?: StringNullableFilter<"ClineRun"> | string | null
-    logs?: JsonNullableFilter<"ClineRun">
-    createdAt?: DateTimeFilter<"ClineRun"> | Date | string
-    agentRun?: XOR<AgentRunScalarRelationFilter, AgentRunWhereInput>
-  }, "id" | "agentRunId">
-
-  export type ClineRunOrderByWithAggregationInput = {
-    id?: SortOrder
-    plan?: SortOrderInput | SortOrder
-    output?: SortOrderInput | SortOrder
-    patch?: SortOrderInput | SortOrder
-    reasoning?: SortOrderInput | SortOrder
-    logs?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
-    agentRunId?: SortOrder
-    _count?: ClineRunCountOrderByAggregateInput
-    _max?: ClineRunMaxOrderByAggregateInput
-    _min?: ClineRunMinOrderByAggregateInput
-  }
-
-  export type ClineRunScalarWhereWithAggregatesInput = {
-    AND?: ClineRunScalarWhereWithAggregatesInput | ClineRunScalarWhereWithAggregatesInput[]
-    OR?: ClineRunScalarWhereWithAggregatesInput[]
-    NOT?: ClineRunScalarWhereWithAggregatesInput | ClineRunScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"ClineRun"> | string
-    plan?: JsonNullableWithAggregatesFilter<"ClineRun">
-    output?: JsonNullableWithAggregatesFilter<"ClineRun">
-    patch?: StringNullableWithAggregatesFilter<"ClineRun"> | string | null
-    reasoning?: StringNullableWithAggregatesFilter<"ClineRun"> | string | null
-    logs?: JsonNullableWithAggregatesFilter<"ClineRun">
-    createdAt?: DateTimeWithAggregatesFilter<"ClineRun"> | Date | string
-    agentRunId?: StringWithAggregatesFilter<"ClineRun"> | string
+  export type AIRunScalarWhereWithAggregatesInput = {
+    AND?: AIRunScalarWhereWithAggregatesInput | AIRunScalarWhereWithAggregatesInput[]
+    OR?: AIRunScalarWhereWithAggregatesInput[]
+    NOT?: AIRunScalarWhereWithAggregatesInput | AIRunScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"AIRun"> | string
+    prompt?: StringWithAggregatesFilter<"AIRun"> | string
+    response?: StringWithAggregatesFilter<"AIRun"> | string
+    steps?: JsonNullableWithAggregatesFilter<"AIRun">
+    files?: JsonNullableWithAggregatesFilter<"AIRun">
+    createdAt?: DateTimeWithAggregatesFilter<"AIRun"> | Date | string
+    agentRunId?: StringWithAggregatesFilter<"AIRun"> | string
   }
 
   export type UserCreateInput = {
@@ -9142,8 +7837,7 @@ export namespace Prisma {
     issue?: IssueCreateNestedOneWithoutAgentRunsInput
     project: ReposCreateNestedOneWithoutAgentRunsInput
     triggeredBy?: UserCreateNestedOneWithoutAgentRunsInput
-    kestraRun?: KestraRunCreateNestedOneWithoutAgentRunInput
-    clineRun?: ClineRunCreateNestedOneWithoutAgentRunInput
+    aiRun?: AIRunCreateNestedOneWithoutAgentRunInput
   }
 
   export type AgentRunUncheckedCreateInput = {
@@ -9155,8 +7849,7 @@ export namespace Prisma {
     triggeredById?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    kestraRun?: KestraRunUncheckedCreateNestedOneWithoutAgentRunInput
-    clineRun?: ClineRunUncheckedCreateNestedOneWithoutAgentRunInput
+    aiRun?: AIRunUncheckedCreateNestedOneWithoutAgentRunInput
   }
 
   export type AgentRunUpdateInput = {
@@ -9168,8 +7861,7 @@ export namespace Prisma {
     issue?: IssueUpdateOneWithoutAgentRunsNestedInput
     project?: ReposUpdateOneRequiredWithoutAgentRunsNestedInput
     triggeredBy?: UserUpdateOneWithoutAgentRunsNestedInput
-    kestraRun?: KestraRunUpdateOneWithoutAgentRunNestedInput
-    clineRun?: ClineRunUpdateOneWithoutAgentRunNestedInput
+    aiRun?: AIRunUpdateOneWithoutAgentRunNestedInput
   }
 
   export type AgentRunUncheckedUpdateInput = {
@@ -9181,8 +7873,7 @@ export namespace Prisma {
     triggeredById?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    kestraRun?: KestraRunUncheckedUpdateOneWithoutAgentRunNestedInput
-    clineRun?: ClineRunUncheckedUpdateOneWithoutAgentRunNestedInput
+    aiRun?: AIRunUncheckedUpdateOneWithoutAgentRunNestedInput
   }
 
   export type AgentRunCreateManyInput = {
@@ -9215,154 +7906,71 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type KestraRunCreateInput = {
+  export type AIRunCreateInput = {
     id?: string
-    flowId?: string | null
-    flowStatus?: string | null
-    summary?: string | null
-    evaluation?: NullableJsonNullValueInput | InputJsonValue
-    logs?: NullableJsonNullValueInput | InputJsonValue
+    prompt: string
+    response: string
+    steps?: NullableJsonNullValueInput | InputJsonValue
+    files?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
-    agentRun: AgentRunCreateNestedOneWithoutKestraRunInput
+    agentRun: AgentRunCreateNestedOneWithoutAiRunInput
   }
 
-  export type KestraRunUncheckedCreateInput = {
+  export type AIRunUncheckedCreateInput = {
     id?: string
-    flowId?: string | null
-    flowStatus?: string | null
-    summary?: string | null
-    evaluation?: NullableJsonNullValueInput | InputJsonValue
-    logs?: NullableJsonNullValueInput | InputJsonValue
+    prompt: string
+    response: string
+    steps?: NullableJsonNullValueInput | InputJsonValue
+    files?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     agentRunId: string
   }
 
-  export type KestraRunUpdateInput = {
+  export type AIRunUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    flowId?: NullableStringFieldUpdateOperationsInput | string | null
-    flowStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    summary?: NullableStringFieldUpdateOperationsInput | string | null
-    evaluation?: NullableJsonNullValueInput | InputJsonValue
-    logs?: NullableJsonNullValueInput | InputJsonValue
+    prompt?: StringFieldUpdateOperationsInput | string
+    response?: StringFieldUpdateOperationsInput | string
+    steps?: NullableJsonNullValueInput | InputJsonValue
+    files?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    agentRun?: AgentRunUpdateOneRequiredWithoutKestraRunNestedInput
+    agentRun?: AgentRunUpdateOneRequiredWithoutAiRunNestedInput
   }
 
-  export type KestraRunUncheckedUpdateInput = {
+  export type AIRunUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    flowId?: NullableStringFieldUpdateOperationsInput | string | null
-    flowStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    summary?: NullableStringFieldUpdateOperationsInput | string | null
-    evaluation?: NullableJsonNullValueInput | InputJsonValue
-    logs?: NullableJsonNullValueInput | InputJsonValue
+    prompt?: StringFieldUpdateOperationsInput | string
+    response?: StringFieldUpdateOperationsInput | string
+    steps?: NullableJsonNullValueInput | InputJsonValue
+    files?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     agentRunId?: StringFieldUpdateOperationsInput | string
   }
 
-  export type KestraRunCreateManyInput = {
+  export type AIRunCreateManyInput = {
     id?: string
-    flowId?: string | null
-    flowStatus?: string | null
-    summary?: string | null
-    evaluation?: NullableJsonNullValueInput | InputJsonValue
-    logs?: NullableJsonNullValueInput | InputJsonValue
+    prompt: string
+    response: string
+    steps?: NullableJsonNullValueInput | InputJsonValue
+    files?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     agentRunId: string
   }
 
-  export type KestraRunUpdateManyMutationInput = {
+  export type AIRunUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    flowId?: NullableStringFieldUpdateOperationsInput | string | null
-    flowStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    summary?: NullableStringFieldUpdateOperationsInput | string | null
-    evaluation?: NullableJsonNullValueInput | InputJsonValue
-    logs?: NullableJsonNullValueInput | InputJsonValue
+    prompt?: StringFieldUpdateOperationsInput | string
+    response?: StringFieldUpdateOperationsInput | string
+    steps?: NullableJsonNullValueInput | InputJsonValue
+    files?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type KestraRunUncheckedUpdateManyInput = {
+  export type AIRunUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    flowId?: NullableStringFieldUpdateOperationsInput | string | null
-    flowStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    summary?: NullableStringFieldUpdateOperationsInput | string | null
-    evaluation?: NullableJsonNullValueInput | InputJsonValue
-    logs?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    agentRunId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type ClineRunCreateInput = {
-    id?: string
-    plan?: NullableJsonNullValueInput | InputJsonValue
-    output?: NullableJsonNullValueInput | InputJsonValue
-    patch?: string | null
-    reasoning?: string | null
-    logs?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: Date | string
-    agentRun: AgentRunCreateNestedOneWithoutClineRunInput
-  }
-
-  export type ClineRunUncheckedCreateInput = {
-    id?: string
-    plan?: NullableJsonNullValueInput | InputJsonValue
-    output?: NullableJsonNullValueInput | InputJsonValue
-    patch?: string | null
-    reasoning?: string | null
-    logs?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: Date | string
-    agentRunId: string
-  }
-
-  export type ClineRunUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    plan?: NullableJsonNullValueInput | InputJsonValue
-    output?: NullableJsonNullValueInput | InputJsonValue
-    patch?: NullableStringFieldUpdateOperationsInput | string | null
-    reasoning?: NullableStringFieldUpdateOperationsInput | string | null
-    logs?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    agentRun?: AgentRunUpdateOneRequiredWithoutClineRunNestedInput
-  }
-
-  export type ClineRunUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    plan?: NullableJsonNullValueInput | InputJsonValue
-    output?: NullableJsonNullValueInput | InputJsonValue
-    patch?: NullableStringFieldUpdateOperationsInput | string | null
-    reasoning?: NullableStringFieldUpdateOperationsInput | string | null
-    logs?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    agentRunId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type ClineRunCreateManyInput = {
-    id?: string
-    plan?: NullableJsonNullValueInput | InputJsonValue
-    output?: NullableJsonNullValueInput | InputJsonValue
-    patch?: string | null
-    reasoning?: string | null
-    logs?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: Date | string
-    agentRunId: string
-  }
-
-  export type ClineRunUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    plan?: NullableJsonNullValueInput | InputJsonValue
-    output?: NullableJsonNullValueInput | InputJsonValue
-    patch?: NullableStringFieldUpdateOperationsInput | string | null
-    reasoning?: NullableStringFieldUpdateOperationsInput | string | null
-    logs?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ClineRunUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    plan?: NullableJsonNullValueInput | InputJsonValue
-    output?: NullableJsonNullValueInput | InputJsonValue
-    patch?: NullableStringFieldUpdateOperationsInput | string | null
-    reasoning?: NullableStringFieldUpdateOperationsInput | string | null
-    logs?: NullableJsonNullValueInput | InputJsonValue
+    prompt?: StringFieldUpdateOperationsInput | string
+    response?: StringFieldUpdateOperationsInput | string
+    steps?: NullableJsonNullValueInput | InputJsonValue
+    files?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     agentRunId?: StringFieldUpdateOperationsInput | string
   }
@@ -9691,14 +8299,9 @@ export namespace Prisma {
     isNot?: UserWhereInput | null
   }
 
-  export type KestraRunNullableScalarRelationFilter = {
-    is?: KestraRunWhereInput | null
-    isNot?: KestraRunWhereInput | null
-  }
-
-  export type ClineRunNullableScalarRelationFilter = {
-    is?: ClineRunWhereInput | null
-    isNot?: ClineRunWhereInput | null
+  export type AIRunNullableScalarRelationFilter = {
+    is?: AIRunWhereInput | null
+    isNot?: AIRunWhereInput | null
   }
 
   export type AgentRunCountOrderByAggregateInput = {
@@ -9739,58 +8342,28 @@ export namespace Prisma {
     isNot?: AgentRunWhereInput
   }
 
-  export type KestraRunCountOrderByAggregateInput = {
+  export type AIRunCountOrderByAggregateInput = {
     id?: SortOrder
-    flowId?: SortOrder
-    flowStatus?: SortOrder
-    summary?: SortOrder
-    evaluation?: SortOrder
-    logs?: SortOrder
+    prompt?: SortOrder
+    response?: SortOrder
+    steps?: SortOrder
+    files?: SortOrder
     createdAt?: SortOrder
     agentRunId?: SortOrder
   }
 
-  export type KestraRunMaxOrderByAggregateInput = {
+  export type AIRunMaxOrderByAggregateInput = {
     id?: SortOrder
-    flowId?: SortOrder
-    flowStatus?: SortOrder
-    summary?: SortOrder
+    prompt?: SortOrder
+    response?: SortOrder
     createdAt?: SortOrder
     agentRunId?: SortOrder
   }
 
-  export type KestraRunMinOrderByAggregateInput = {
+  export type AIRunMinOrderByAggregateInput = {
     id?: SortOrder
-    flowId?: SortOrder
-    flowStatus?: SortOrder
-    summary?: SortOrder
-    createdAt?: SortOrder
-    agentRunId?: SortOrder
-  }
-
-  export type ClineRunCountOrderByAggregateInput = {
-    id?: SortOrder
-    plan?: SortOrder
-    output?: SortOrder
-    patch?: SortOrder
-    reasoning?: SortOrder
-    logs?: SortOrder
-    createdAt?: SortOrder
-    agentRunId?: SortOrder
-  }
-
-  export type ClineRunMaxOrderByAggregateInput = {
-    id?: SortOrder
-    patch?: SortOrder
-    reasoning?: SortOrder
-    createdAt?: SortOrder
-    agentRunId?: SortOrder
-  }
-
-  export type ClineRunMinOrderByAggregateInput = {
-    id?: SortOrder
-    patch?: SortOrder
-    reasoning?: SortOrder
+    prompt?: SortOrder
+    response?: SortOrder
     createdAt?: SortOrder
     agentRunId?: SortOrder
   }
@@ -10071,28 +8644,16 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type KestraRunCreateNestedOneWithoutAgentRunInput = {
-    create?: XOR<KestraRunCreateWithoutAgentRunInput, KestraRunUncheckedCreateWithoutAgentRunInput>
-    connectOrCreate?: KestraRunCreateOrConnectWithoutAgentRunInput
-    connect?: KestraRunWhereUniqueInput
+  export type AIRunCreateNestedOneWithoutAgentRunInput = {
+    create?: XOR<AIRunCreateWithoutAgentRunInput, AIRunUncheckedCreateWithoutAgentRunInput>
+    connectOrCreate?: AIRunCreateOrConnectWithoutAgentRunInput
+    connect?: AIRunWhereUniqueInput
   }
 
-  export type ClineRunCreateNestedOneWithoutAgentRunInput = {
-    create?: XOR<ClineRunCreateWithoutAgentRunInput, ClineRunUncheckedCreateWithoutAgentRunInput>
-    connectOrCreate?: ClineRunCreateOrConnectWithoutAgentRunInput
-    connect?: ClineRunWhereUniqueInput
-  }
-
-  export type KestraRunUncheckedCreateNestedOneWithoutAgentRunInput = {
-    create?: XOR<KestraRunCreateWithoutAgentRunInput, KestraRunUncheckedCreateWithoutAgentRunInput>
-    connectOrCreate?: KestraRunCreateOrConnectWithoutAgentRunInput
-    connect?: KestraRunWhereUniqueInput
-  }
-
-  export type ClineRunUncheckedCreateNestedOneWithoutAgentRunInput = {
-    create?: XOR<ClineRunCreateWithoutAgentRunInput, ClineRunUncheckedCreateWithoutAgentRunInput>
-    connectOrCreate?: ClineRunCreateOrConnectWithoutAgentRunInput
-    connect?: ClineRunWhereUniqueInput
+  export type AIRunUncheckedCreateNestedOneWithoutAgentRunInput = {
+    create?: XOR<AIRunCreateWithoutAgentRunInput, AIRunUncheckedCreateWithoutAgentRunInput>
+    connectOrCreate?: AIRunCreateOrConnectWithoutAgentRunInput
+    connect?: AIRunWhereUniqueInput
   }
 
   export type IssueUpdateOneWithoutAgentRunsNestedInput = {
@@ -10123,72 +8684,38 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAgentRunsInput, UserUpdateWithoutAgentRunsInput>, UserUncheckedUpdateWithoutAgentRunsInput>
   }
 
-  export type KestraRunUpdateOneWithoutAgentRunNestedInput = {
-    create?: XOR<KestraRunCreateWithoutAgentRunInput, KestraRunUncheckedCreateWithoutAgentRunInput>
-    connectOrCreate?: KestraRunCreateOrConnectWithoutAgentRunInput
-    upsert?: KestraRunUpsertWithoutAgentRunInput
-    disconnect?: KestraRunWhereInput | boolean
-    delete?: KestraRunWhereInput | boolean
-    connect?: KestraRunWhereUniqueInput
-    update?: XOR<XOR<KestraRunUpdateToOneWithWhereWithoutAgentRunInput, KestraRunUpdateWithoutAgentRunInput>, KestraRunUncheckedUpdateWithoutAgentRunInput>
+  export type AIRunUpdateOneWithoutAgentRunNestedInput = {
+    create?: XOR<AIRunCreateWithoutAgentRunInput, AIRunUncheckedCreateWithoutAgentRunInput>
+    connectOrCreate?: AIRunCreateOrConnectWithoutAgentRunInput
+    upsert?: AIRunUpsertWithoutAgentRunInput
+    disconnect?: AIRunWhereInput | boolean
+    delete?: AIRunWhereInput | boolean
+    connect?: AIRunWhereUniqueInput
+    update?: XOR<XOR<AIRunUpdateToOneWithWhereWithoutAgentRunInput, AIRunUpdateWithoutAgentRunInput>, AIRunUncheckedUpdateWithoutAgentRunInput>
   }
 
-  export type ClineRunUpdateOneWithoutAgentRunNestedInput = {
-    create?: XOR<ClineRunCreateWithoutAgentRunInput, ClineRunUncheckedCreateWithoutAgentRunInput>
-    connectOrCreate?: ClineRunCreateOrConnectWithoutAgentRunInput
-    upsert?: ClineRunUpsertWithoutAgentRunInput
-    disconnect?: ClineRunWhereInput | boolean
-    delete?: ClineRunWhereInput | boolean
-    connect?: ClineRunWhereUniqueInput
-    update?: XOR<XOR<ClineRunUpdateToOneWithWhereWithoutAgentRunInput, ClineRunUpdateWithoutAgentRunInput>, ClineRunUncheckedUpdateWithoutAgentRunInput>
+  export type AIRunUncheckedUpdateOneWithoutAgentRunNestedInput = {
+    create?: XOR<AIRunCreateWithoutAgentRunInput, AIRunUncheckedCreateWithoutAgentRunInput>
+    connectOrCreate?: AIRunCreateOrConnectWithoutAgentRunInput
+    upsert?: AIRunUpsertWithoutAgentRunInput
+    disconnect?: AIRunWhereInput | boolean
+    delete?: AIRunWhereInput | boolean
+    connect?: AIRunWhereUniqueInput
+    update?: XOR<XOR<AIRunUpdateToOneWithWhereWithoutAgentRunInput, AIRunUpdateWithoutAgentRunInput>, AIRunUncheckedUpdateWithoutAgentRunInput>
   }
 
-  export type KestraRunUncheckedUpdateOneWithoutAgentRunNestedInput = {
-    create?: XOR<KestraRunCreateWithoutAgentRunInput, KestraRunUncheckedCreateWithoutAgentRunInput>
-    connectOrCreate?: KestraRunCreateOrConnectWithoutAgentRunInput
-    upsert?: KestraRunUpsertWithoutAgentRunInput
-    disconnect?: KestraRunWhereInput | boolean
-    delete?: KestraRunWhereInput | boolean
-    connect?: KestraRunWhereUniqueInput
-    update?: XOR<XOR<KestraRunUpdateToOneWithWhereWithoutAgentRunInput, KestraRunUpdateWithoutAgentRunInput>, KestraRunUncheckedUpdateWithoutAgentRunInput>
-  }
-
-  export type ClineRunUncheckedUpdateOneWithoutAgentRunNestedInput = {
-    create?: XOR<ClineRunCreateWithoutAgentRunInput, ClineRunUncheckedCreateWithoutAgentRunInput>
-    connectOrCreate?: ClineRunCreateOrConnectWithoutAgentRunInput
-    upsert?: ClineRunUpsertWithoutAgentRunInput
-    disconnect?: ClineRunWhereInput | boolean
-    delete?: ClineRunWhereInput | boolean
-    connect?: ClineRunWhereUniqueInput
-    update?: XOR<XOR<ClineRunUpdateToOneWithWhereWithoutAgentRunInput, ClineRunUpdateWithoutAgentRunInput>, ClineRunUncheckedUpdateWithoutAgentRunInput>
-  }
-
-  export type AgentRunCreateNestedOneWithoutKestraRunInput = {
-    create?: XOR<AgentRunCreateWithoutKestraRunInput, AgentRunUncheckedCreateWithoutKestraRunInput>
-    connectOrCreate?: AgentRunCreateOrConnectWithoutKestraRunInput
+  export type AgentRunCreateNestedOneWithoutAiRunInput = {
+    create?: XOR<AgentRunCreateWithoutAiRunInput, AgentRunUncheckedCreateWithoutAiRunInput>
+    connectOrCreate?: AgentRunCreateOrConnectWithoutAiRunInput
     connect?: AgentRunWhereUniqueInput
   }
 
-  export type AgentRunUpdateOneRequiredWithoutKestraRunNestedInput = {
-    create?: XOR<AgentRunCreateWithoutKestraRunInput, AgentRunUncheckedCreateWithoutKestraRunInput>
-    connectOrCreate?: AgentRunCreateOrConnectWithoutKestraRunInput
-    upsert?: AgentRunUpsertWithoutKestraRunInput
+  export type AgentRunUpdateOneRequiredWithoutAiRunNestedInput = {
+    create?: XOR<AgentRunCreateWithoutAiRunInput, AgentRunUncheckedCreateWithoutAiRunInput>
+    connectOrCreate?: AgentRunCreateOrConnectWithoutAiRunInput
+    upsert?: AgentRunUpsertWithoutAiRunInput
     connect?: AgentRunWhereUniqueInput
-    update?: XOR<XOR<AgentRunUpdateToOneWithWhereWithoutKestraRunInput, AgentRunUpdateWithoutKestraRunInput>, AgentRunUncheckedUpdateWithoutKestraRunInput>
-  }
-
-  export type AgentRunCreateNestedOneWithoutClineRunInput = {
-    create?: XOR<AgentRunCreateWithoutClineRunInput, AgentRunUncheckedCreateWithoutClineRunInput>
-    connectOrCreate?: AgentRunCreateOrConnectWithoutClineRunInput
-    connect?: AgentRunWhereUniqueInput
-  }
-
-  export type AgentRunUpdateOneRequiredWithoutClineRunNestedInput = {
-    create?: XOR<AgentRunCreateWithoutClineRunInput, AgentRunUncheckedCreateWithoutClineRunInput>
-    connectOrCreate?: AgentRunCreateOrConnectWithoutClineRunInput
-    upsert?: AgentRunUpsertWithoutClineRunInput
-    connect?: AgentRunWhereUniqueInput
-    update?: XOR<XOR<AgentRunUpdateToOneWithWhereWithoutClineRunInput, AgentRunUpdateWithoutClineRunInput>, AgentRunUncheckedUpdateWithoutClineRunInput>
+    update?: XOR<XOR<AgentRunUpdateToOneWithWhereWithoutAiRunInput, AgentRunUpdateWithoutAiRunInput>, AgentRunUncheckedUpdateWithoutAiRunInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -10392,8 +8919,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     issue?: IssueCreateNestedOneWithoutAgentRunsInput
     project: ReposCreateNestedOneWithoutAgentRunsInput
-    kestraRun?: KestraRunCreateNestedOneWithoutAgentRunInput
-    clineRun?: ClineRunCreateNestedOneWithoutAgentRunInput
+    aiRun?: AIRunCreateNestedOneWithoutAgentRunInput
   }
 
   export type AgentRunUncheckedCreateWithoutTriggeredByInput = {
@@ -10404,8 +8930,7 @@ export namespace Prisma {
     projectId: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    kestraRun?: KestraRunUncheckedCreateNestedOneWithoutAgentRunInput
-    clineRun?: ClineRunUncheckedCreateNestedOneWithoutAgentRunInput
+    aiRun?: AIRunUncheckedCreateNestedOneWithoutAgentRunInput
   }
 
   export type AgentRunCreateOrConnectWithoutTriggeredByInput = {
@@ -10545,8 +9070,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     issue?: IssueCreateNestedOneWithoutAgentRunsInput
     triggeredBy?: UserCreateNestedOneWithoutAgentRunsInput
-    kestraRun?: KestraRunCreateNestedOneWithoutAgentRunInput
-    clineRun?: ClineRunCreateNestedOneWithoutAgentRunInput
+    aiRun?: AIRunCreateNestedOneWithoutAgentRunInput
   }
 
   export type AgentRunUncheckedCreateWithoutProjectInput = {
@@ -10557,8 +9081,7 @@ export namespace Prisma {
     triggeredById?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    kestraRun?: KestraRunUncheckedCreateNestedOneWithoutAgentRunInput
-    clineRun?: ClineRunUncheckedCreateNestedOneWithoutAgentRunInput
+    aiRun?: AIRunUncheckedCreateNestedOneWithoutAgentRunInput
   }
 
   export type AgentRunCreateOrConnectWithoutProjectInput = {
@@ -10686,8 +9209,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     project: ReposCreateNestedOneWithoutAgentRunsInput
     triggeredBy?: UserCreateNestedOneWithoutAgentRunsInput
-    kestraRun?: KestraRunCreateNestedOneWithoutAgentRunInput
-    clineRun?: ClineRunCreateNestedOneWithoutAgentRunInput
+    aiRun?: AIRunCreateNestedOneWithoutAgentRunInput
   }
 
   export type AgentRunUncheckedCreateWithoutIssueInput = {
@@ -10698,8 +9220,7 @@ export namespace Prisma {
     triggeredById?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    kestraRun?: KestraRunUncheckedCreateNestedOneWithoutAgentRunInput
-    clineRun?: ClineRunUncheckedCreateNestedOneWithoutAgentRunInput
+    aiRun?: AIRunUncheckedCreateNestedOneWithoutAgentRunInput
   }
 
   export type AgentRunCreateOrConnectWithoutIssueInput = {
@@ -10846,54 +9367,27 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutAgentRunsInput, UserUncheckedCreateWithoutAgentRunsInput>
   }
 
-  export type KestraRunCreateWithoutAgentRunInput = {
+  export type AIRunCreateWithoutAgentRunInput = {
     id?: string
-    flowId?: string | null
-    flowStatus?: string | null
-    summary?: string | null
-    evaluation?: NullableJsonNullValueInput | InputJsonValue
-    logs?: NullableJsonNullValueInput | InputJsonValue
+    prompt: string
+    response: string
+    steps?: NullableJsonNullValueInput | InputJsonValue
+    files?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
   }
 
-  export type KestraRunUncheckedCreateWithoutAgentRunInput = {
+  export type AIRunUncheckedCreateWithoutAgentRunInput = {
     id?: string
-    flowId?: string | null
-    flowStatus?: string | null
-    summary?: string | null
-    evaluation?: NullableJsonNullValueInput | InputJsonValue
-    logs?: NullableJsonNullValueInput | InputJsonValue
+    prompt: string
+    response: string
+    steps?: NullableJsonNullValueInput | InputJsonValue
+    files?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
   }
 
-  export type KestraRunCreateOrConnectWithoutAgentRunInput = {
-    where: KestraRunWhereUniqueInput
-    create: XOR<KestraRunCreateWithoutAgentRunInput, KestraRunUncheckedCreateWithoutAgentRunInput>
-  }
-
-  export type ClineRunCreateWithoutAgentRunInput = {
-    id?: string
-    plan?: NullableJsonNullValueInput | InputJsonValue
-    output?: NullableJsonNullValueInput | InputJsonValue
-    patch?: string | null
-    reasoning?: string | null
-    logs?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: Date | string
-  }
-
-  export type ClineRunUncheckedCreateWithoutAgentRunInput = {
-    id?: string
-    plan?: NullableJsonNullValueInput | InputJsonValue
-    output?: NullableJsonNullValueInput | InputJsonValue
-    patch?: string | null
-    reasoning?: string | null
-    logs?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: Date | string
-  }
-
-  export type ClineRunCreateOrConnectWithoutAgentRunInput = {
-    where: ClineRunWhereUniqueInput
-    create: XOR<ClineRunCreateWithoutAgentRunInput, ClineRunUncheckedCreateWithoutAgentRunInput>
+  export type AIRunCreateOrConnectWithoutAgentRunInput = {
+    where: AIRunWhereUniqueInput
+    create: XOR<AIRunCreateWithoutAgentRunInput, AIRunUncheckedCreateWithoutAgentRunInput>
   }
 
   export type IssueUpsertWithoutAgentRunsInput = {
@@ -10997,69 +9491,36 @@ export namespace Prisma {
     projects?: ReposUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type KestraRunUpsertWithoutAgentRunInput = {
-    update: XOR<KestraRunUpdateWithoutAgentRunInput, KestraRunUncheckedUpdateWithoutAgentRunInput>
-    create: XOR<KestraRunCreateWithoutAgentRunInput, KestraRunUncheckedCreateWithoutAgentRunInput>
-    where?: KestraRunWhereInput
+  export type AIRunUpsertWithoutAgentRunInput = {
+    update: XOR<AIRunUpdateWithoutAgentRunInput, AIRunUncheckedUpdateWithoutAgentRunInput>
+    create: XOR<AIRunCreateWithoutAgentRunInput, AIRunUncheckedCreateWithoutAgentRunInput>
+    where?: AIRunWhereInput
   }
 
-  export type KestraRunUpdateToOneWithWhereWithoutAgentRunInput = {
-    where?: KestraRunWhereInput
-    data: XOR<KestraRunUpdateWithoutAgentRunInput, KestraRunUncheckedUpdateWithoutAgentRunInput>
+  export type AIRunUpdateToOneWithWhereWithoutAgentRunInput = {
+    where?: AIRunWhereInput
+    data: XOR<AIRunUpdateWithoutAgentRunInput, AIRunUncheckedUpdateWithoutAgentRunInput>
   }
 
-  export type KestraRunUpdateWithoutAgentRunInput = {
+  export type AIRunUpdateWithoutAgentRunInput = {
     id?: StringFieldUpdateOperationsInput | string
-    flowId?: NullableStringFieldUpdateOperationsInput | string | null
-    flowStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    summary?: NullableStringFieldUpdateOperationsInput | string | null
-    evaluation?: NullableJsonNullValueInput | InputJsonValue
-    logs?: NullableJsonNullValueInput | InputJsonValue
+    prompt?: StringFieldUpdateOperationsInput | string
+    response?: StringFieldUpdateOperationsInput | string
+    steps?: NullableJsonNullValueInput | InputJsonValue
+    files?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type KestraRunUncheckedUpdateWithoutAgentRunInput = {
+  export type AIRunUncheckedUpdateWithoutAgentRunInput = {
     id?: StringFieldUpdateOperationsInput | string
-    flowId?: NullableStringFieldUpdateOperationsInput | string | null
-    flowStatus?: NullableStringFieldUpdateOperationsInput | string | null
-    summary?: NullableStringFieldUpdateOperationsInput | string | null
-    evaluation?: NullableJsonNullValueInput | InputJsonValue
-    logs?: NullableJsonNullValueInput | InputJsonValue
+    prompt?: StringFieldUpdateOperationsInput | string
+    response?: StringFieldUpdateOperationsInput | string
+    steps?: NullableJsonNullValueInput | InputJsonValue
+    files?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ClineRunUpsertWithoutAgentRunInput = {
-    update: XOR<ClineRunUpdateWithoutAgentRunInput, ClineRunUncheckedUpdateWithoutAgentRunInput>
-    create: XOR<ClineRunCreateWithoutAgentRunInput, ClineRunUncheckedCreateWithoutAgentRunInput>
-    where?: ClineRunWhereInput
-  }
-
-  export type ClineRunUpdateToOneWithWhereWithoutAgentRunInput = {
-    where?: ClineRunWhereInput
-    data: XOR<ClineRunUpdateWithoutAgentRunInput, ClineRunUncheckedUpdateWithoutAgentRunInput>
-  }
-
-  export type ClineRunUpdateWithoutAgentRunInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    plan?: NullableJsonNullValueInput | InputJsonValue
-    output?: NullableJsonNullValueInput | InputJsonValue
-    patch?: NullableStringFieldUpdateOperationsInput | string | null
-    reasoning?: NullableStringFieldUpdateOperationsInput | string | null
-    logs?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ClineRunUncheckedUpdateWithoutAgentRunInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    plan?: NullableJsonNullValueInput | InputJsonValue
-    output?: NullableJsonNullValueInput | InputJsonValue
-    patch?: NullableStringFieldUpdateOperationsInput | string | null
-    reasoning?: NullableStringFieldUpdateOperationsInput | string | null
-    logs?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type AgentRunCreateWithoutKestraRunInput = {
+  export type AgentRunCreateWithoutAiRunInput = {
     id?: string
     status: string
     runType: string
@@ -11068,10 +9529,9 @@ export namespace Prisma {
     issue?: IssueCreateNestedOneWithoutAgentRunsInput
     project: ReposCreateNestedOneWithoutAgentRunsInput
     triggeredBy?: UserCreateNestedOneWithoutAgentRunsInput
-    clineRun?: ClineRunCreateNestedOneWithoutAgentRunInput
   }
 
-  export type AgentRunUncheckedCreateWithoutKestraRunInput = {
+  export type AgentRunUncheckedCreateWithoutAiRunInput = {
     id?: string
     status: string
     runType: string
@@ -11080,26 +9540,25 @@ export namespace Prisma {
     triggeredById?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    clineRun?: ClineRunUncheckedCreateNestedOneWithoutAgentRunInput
   }
 
-  export type AgentRunCreateOrConnectWithoutKestraRunInput = {
+  export type AgentRunCreateOrConnectWithoutAiRunInput = {
     where: AgentRunWhereUniqueInput
-    create: XOR<AgentRunCreateWithoutKestraRunInput, AgentRunUncheckedCreateWithoutKestraRunInput>
+    create: XOR<AgentRunCreateWithoutAiRunInput, AgentRunUncheckedCreateWithoutAiRunInput>
   }
 
-  export type AgentRunUpsertWithoutKestraRunInput = {
-    update: XOR<AgentRunUpdateWithoutKestraRunInput, AgentRunUncheckedUpdateWithoutKestraRunInput>
-    create: XOR<AgentRunCreateWithoutKestraRunInput, AgentRunUncheckedCreateWithoutKestraRunInput>
+  export type AgentRunUpsertWithoutAiRunInput = {
+    update: XOR<AgentRunUpdateWithoutAiRunInput, AgentRunUncheckedUpdateWithoutAiRunInput>
+    create: XOR<AgentRunCreateWithoutAiRunInput, AgentRunUncheckedCreateWithoutAiRunInput>
     where?: AgentRunWhereInput
   }
 
-  export type AgentRunUpdateToOneWithWhereWithoutKestraRunInput = {
+  export type AgentRunUpdateToOneWithWhereWithoutAiRunInput = {
     where?: AgentRunWhereInput
-    data: XOR<AgentRunUpdateWithoutKestraRunInput, AgentRunUncheckedUpdateWithoutKestraRunInput>
+    data: XOR<AgentRunUpdateWithoutAiRunInput, AgentRunUncheckedUpdateWithoutAiRunInput>
   }
 
-  export type AgentRunUpdateWithoutKestraRunInput = {
+  export type AgentRunUpdateWithoutAiRunInput = {
     id?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     runType?: StringFieldUpdateOperationsInput | string
@@ -11108,10 +9567,9 @@ export namespace Prisma {
     issue?: IssueUpdateOneWithoutAgentRunsNestedInput
     project?: ReposUpdateOneRequiredWithoutAgentRunsNestedInput
     triggeredBy?: UserUpdateOneWithoutAgentRunsNestedInput
-    clineRun?: ClineRunUpdateOneWithoutAgentRunNestedInput
   }
 
-  export type AgentRunUncheckedUpdateWithoutKestraRunInput = {
+  export type AgentRunUncheckedUpdateWithoutAiRunInput = {
     id?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     runType?: StringFieldUpdateOperationsInput | string
@@ -11120,71 +9578,6 @@ export namespace Prisma {
     triggeredById?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    clineRun?: ClineRunUncheckedUpdateOneWithoutAgentRunNestedInput
-  }
-
-  export type AgentRunCreateWithoutClineRunInput = {
-    id?: string
-    status: string
-    runType: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    issue?: IssueCreateNestedOneWithoutAgentRunsInput
-    project: ReposCreateNestedOneWithoutAgentRunsInput
-    triggeredBy?: UserCreateNestedOneWithoutAgentRunsInput
-    kestraRun?: KestraRunCreateNestedOneWithoutAgentRunInput
-  }
-
-  export type AgentRunUncheckedCreateWithoutClineRunInput = {
-    id?: string
-    status: string
-    runType: string
-    issueId?: string | null
-    projectId: string
-    triggeredById?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    kestraRun?: KestraRunUncheckedCreateNestedOneWithoutAgentRunInput
-  }
-
-  export type AgentRunCreateOrConnectWithoutClineRunInput = {
-    where: AgentRunWhereUniqueInput
-    create: XOR<AgentRunCreateWithoutClineRunInput, AgentRunUncheckedCreateWithoutClineRunInput>
-  }
-
-  export type AgentRunUpsertWithoutClineRunInput = {
-    update: XOR<AgentRunUpdateWithoutClineRunInput, AgentRunUncheckedUpdateWithoutClineRunInput>
-    create: XOR<AgentRunCreateWithoutClineRunInput, AgentRunUncheckedCreateWithoutClineRunInput>
-    where?: AgentRunWhereInput
-  }
-
-  export type AgentRunUpdateToOneWithWhereWithoutClineRunInput = {
-    where?: AgentRunWhereInput
-    data: XOR<AgentRunUpdateWithoutClineRunInput, AgentRunUncheckedUpdateWithoutClineRunInput>
-  }
-
-  export type AgentRunUpdateWithoutClineRunInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
-    runType?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    issue?: IssueUpdateOneWithoutAgentRunsNestedInput
-    project?: ReposUpdateOneRequiredWithoutAgentRunsNestedInput
-    triggeredBy?: UserUpdateOneWithoutAgentRunsNestedInput
-    kestraRun?: KestraRunUpdateOneWithoutAgentRunNestedInput
-  }
-
-  export type AgentRunUncheckedUpdateWithoutClineRunInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    status?: StringFieldUpdateOperationsInput | string
-    runType?: StringFieldUpdateOperationsInput | string
-    issueId?: NullableStringFieldUpdateOperationsInput | string | null
-    projectId?: StringFieldUpdateOperationsInput | string
-    triggeredById?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    kestraRun?: KestraRunUncheckedUpdateOneWithoutAgentRunNestedInput
   }
 
   export type ReposCreateManyUserInput = {
@@ -11249,8 +9642,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     issue?: IssueUpdateOneWithoutAgentRunsNestedInput
     project?: ReposUpdateOneRequiredWithoutAgentRunsNestedInput
-    kestraRun?: KestraRunUpdateOneWithoutAgentRunNestedInput
-    clineRun?: ClineRunUpdateOneWithoutAgentRunNestedInput
+    aiRun?: AIRunUpdateOneWithoutAgentRunNestedInput
   }
 
   export type AgentRunUncheckedUpdateWithoutTriggeredByInput = {
@@ -11261,8 +9653,7 @@ export namespace Prisma {
     projectId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    kestraRun?: KestraRunUncheckedUpdateOneWithoutAgentRunNestedInput
-    clineRun?: ClineRunUncheckedUpdateOneWithoutAgentRunNestedInput
+    aiRun?: AIRunUncheckedUpdateOneWithoutAgentRunNestedInput
   }
 
   export type AgentRunUncheckedUpdateManyWithoutTriggeredByInput = {
@@ -11339,8 +9730,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     issue?: IssueUpdateOneWithoutAgentRunsNestedInput
     triggeredBy?: UserUpdateOneWithoutAgentRunsNestedInput
-    kestraRun?: KestraRunUpdateOneWithoutAgentRunNestedInput
-    clineRun?: ClineRunUpdateOneWithoutAgentRunNestedInput
+    aiRun?: AIRunUpdateOneWithoutAgentRunNestedInput
   }
 
   export type AgentRunUncheckedUpdateWithoutProjectInput = {
@@ -11351,8 +9741,7 @@ export namespace Prisma {
     triggeredById?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    kestraRun?: KestraRunUncheckedUpdateOneWithoutAgentRunNestedInput
-    clineRun?: ClineRunUncheckedUpdateOneWithoutAgentRunNestedInput
+    aiRun?: AIRunUncheckedUpdateOneWithoutAgentRunNestedInput
   }
 
   export type AgentRunUncheckedUpdateManyWithoutProjectInput = {
@@ -11383,8 +9772,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     project?: ReposUpdateOneRequiredWithoutAgentRunsNestedInput
     triggeredBy?: UserUpdateOneWithoutAgentRunsNestedInput
-    kestraRun?: KestraRunUpdateOneWithoutAgentRunNestedInput
-    clineRun?: ClineRunUpdateOneWithoutAgentRunNestedInput
+    aiRun?: AIRunUpdateOneWithoutAgentRunNestedInput
   }
 
   export type AgentRunUncheckedUpdateWithoutIssueInput = {
@@ -11395,8 +9783,7 @@ export namespace Prisma {
     triggeredById?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    kestraRun?: KestraRunUncheckedUpdateOneWithoutAgentRunNestedInput
-    clineRun?: ClineRunUncheckedUpdateOneWithoutAgentRunNestedInput
+    aiRun?: AIRunUncheckedUpdateOneWithoutAgentRunNestedInput
   }
 
   export type AgentRunUncheckedUpdateManyWithoutIssueInput = {

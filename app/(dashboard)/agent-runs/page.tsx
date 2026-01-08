@@ -7,8 +7,7 @@ export default async function AgentRunsPage() {
     include: {
       project: true,
       issue: true,
-      kestraRun: true,
-      clineRun: true,
+      aiRun: true,
     },
   });
 
@@ -39,17 +38,21 @@ export default async function AgentRunsPage() {
               <div className="flex gap-3 text-sm">
                 <span
                   className={`${
-                    run.kestraRun ? "text-green-500" : "text-red-500"
+                    run.aiRun ? "text-green-500" : "text-red-500"
                   }`}
                 >
-                  Kestra
+                  Groq 
                 </span>
                 <span
                   className={`${
-                    run.clineRun ? "text-green-500" : "text-red-500"
+                    run.status === "success"
+                      ? "text-green-500"
+                      : run.status === "running"
+                      ? "text-blue-500"
+                      : "text-red-500"
                   }`}
                 >
-                  Cline
+                  {run.status}
                 </span>
               </div>
             </div>
@@ -59,3 +62,4 @@ export default async function AgentRunsPage() {
     </div>
   );
 }
+

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { Octokit } from "@octokit/rest";
 import { prisma } from "@/lib/prisma";
 
-type ClinePatch = {
+type AIPatch = {
   filePath: string;
   newContent: string;
 };
@@ -13,7 +13,7 @@ export async function POST(req: Request) {
   // 1. LOAD RUN + RELATIONS
   const run = await prisma.agentRun.findUnique({
     where: { id: agentRunId },
-    include: { project: true, clineRun: true },
+    include: { project: true, aiRun: true },
   });
 
   if (!run) {
@@ -27,33 +27,35 @@ export async function POST(req: Request) {
     );
   }
 
-  if (!run.clineRun) {
+  if (!run.aiRun) {
     return NextResponse.json(
-      { error: "Cline output not found for this run" },
+      { error: "AI output not found for this run" },
       { status: 400 }
     );
   }
 
-  let patch: ClinePatch | undefined;
-
-  if (typeof run.clineRun.patch === "string") {
-    try {
-      const parsed = JSON.parse(run.clineRun.patch);
-
-      if (
-        typeof parsed?.filePath === "string" &&
-        typeof parsed?.newContent === "string"
-      ) {
-        patch = parsed;
-      }
-    } catch {
-      // invalid JSON
+  // Extract files from AI response
+  let patch: AIPatch | undefined;
+  
+  try {
+    const aiResponse = JSON.parse(run.aiRun.response);
+    if (Array.isArray(aiResponse.files) && aiResponse.files.length > 0) {
+      const firstFile = aiResponse.files[0];
+      patch = {
+        filePath: firstFile.path,
+        newContent: firstFile.changes || "",
+      };
     }
+  } catch {
+    return NextResponse.json(
+      { error: "Invalid AI response format" },
+      { status: 400 }
+    );
   }
 
   if (!patch) {
     return NextResponse.json(
-      { error: "Patch is missing from Cline output" },
+      { error: "Patch is missing from AI output" },
       { status: 400 }
     );
   }
@@ -82,9 +84,6 @@ export async function POST(req: Request) {
   });
 
   const defaultBranch = repoInfo.data.default_branch;
-  const baseBranchSha = repoInfo.data.pushed_at // TEMP FIX
-    ? repoInfo.data.pushed_at
-    : "main";
 
   await octokit.git.createRef({
     owner: repoOwner,
@@ -114,3 +113,4 @@ export async function POST(req: Request) {
 
   return NextResponse.json({ pr: pr.data });
 }
+

@@ -163,24 +163,12 @@ exports.Prisma.AgentRunScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.KestraRunScalarFieldEnum = {
+exports.Prisma.AIRunScalarFieldEnum = {
   id: 'id',
-  flowId: 'flowId',
-  flowStatus: 'flowStatus',
-  summary: 'summary',
-  evaluation: 'evaluation',
-  logs: 'logs',
-  createdAt: 'createdAt',
-  agentRunId: 'agentRunId'
-};
-
-exports.Prisma.ClineRunScalarFieldEnum = {
-  id: 'id',
-  plan: 'plan',
-  output: 'output',
-  patch: 'patch',
-  reasoning: 'reasoning',
-  logs: 'logs',
+  prompt: 'prompt',
+  response: 'response',
+  steps: 'steps',
+  files: 'files',
   createdAt: 'createdAt',
   agentRunId: 'agentRunId'
 };
@@ -217,8 +205,7 @@ exports.Prisma.ModelName = {
   Repos: 'Repos',
   Issue: 'Issue',
   AgentRun: 'AgentRun',
-  KestraRun: 'KestraRun',
-  ClineRun: 'ClineRun'
+  AIRun: 'AIRun'
 };
 
 /**

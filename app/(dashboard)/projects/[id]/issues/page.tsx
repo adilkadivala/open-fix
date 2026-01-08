@@ -1,7 +1,7 @@
-import { startAgent } from "@/app/actions/start-agent";
 import { syncIssues } from "@/app/actions/sync-issues";
 import { Button } from "@/components/ui/button";
 import { prisma } from "@/lib/prisma";
+import { StreamingAgent } from "@/components/streaming-agent";
 
 export default async function ProjectIssuesPage({
   params,
@@ -35,20 +35,20 @@ export default async function ProjectIssuesPage({
       </form>
 
       {project.issues.map((issue) => (
-        <div key={issue.id} className="p-4 border rounded">
-          <p className="font-semibold text-lg">
-            #{issue.githubIssueId} {issue.title}
-          </p>
-          <p className="text-sm text-neutral-500">{issue.state}</p>
-
-          <form
-            action={async () => {
-              "use server";
-              await startAgent(project.id, issue.id);
-            }}
-          >
-            <Button>Run AI Agent</Button>
-          </form>
+        <div key={issue.id}>
+          <div className="p-4 border rounded mb-4">
+            <p className="font-semibold text-lg">
+              #{issue.githubIssueId} {issue.title}
+            </p>
+            <p className="text-sm text-neutral-500">{issue.state}</p>
+          </div>
+          <div className="mb-8 ml-4">
+            <StreamingAgent
+              projectId={project.id}
+              issueId={issue.id}
+              issueTitle={issue.title}
+            />
+          </div>
         </div>
       ))}
     </div>

@@ -75,34 +75,16 @@ model AgentRun {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  kestraRun KestraRun?
-  clineRun  ClineRun?
+  aiRun AIRun?
 }
 
-// kestra
-model KestraRun {
-  id         String  @id @default(cuid())
-  flowId     String?
-  flowStatus String?
-  summary    String?
-  evaluation Json?
-  logs       Json?
-
-  createdAt DateTime @default(now())
-
-  agentRunId String   @unique
-  agentRun   AgentRun @relation(fields: [agentRunId], references: [id], onDelete: Cascade)
-}
-
-// cline
-model ClineRun {
-  id        String  @id @default(cuid())
-  plan      Json?
-  output    Json?
-  patch     String?
-  reasoning String?
-  logs      Json?
-
+// AI run
+model AIRun {
+  id        String   @id @default(cuid())
+  prompt    String
+  response  String
+  steps     Json?
+  files     Json?
   createdAt DateTime @default(now())
 
   agentRunId String   @unique

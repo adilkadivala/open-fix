@@ -170,9 +170,8 @@ export default function TaskFlowLanding() {
           </h1>
 
           <p className="max-w-2xl leading-normal text-slate-500 sm:text-xl sm:leading-8 animate-in slide-in-from-bottom-5 duration-700 fade-in delay-150">
-            OpenFix.AI uses Kestra, Cline, and powerful LLMs to understand your
-            codebase, analyze issues, and generate step-by-step fix plans with
-            automated PRs.
+            OpenFix.AI uses Groq to understand your codebase, analyze issues,
+            and generate step-by-step fix plans with automated PRs.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto animate-in slide-in-from-bottom-6 duration-700 fade-in delay-300">

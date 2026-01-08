@@ -27,7 +27,7 @@ const data = {
       icon: Folder,
     },
     {
-      title: "Projects",
+      title: "Working-repos",
       url: "/projects",
       icon: GitPullRequest,
     },
