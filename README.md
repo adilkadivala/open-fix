@@ -1,4 +1,4 @@
-# OpenFix.AI – AI-Powered GitHub Issue Fixer  
+# OpenFix.AI – AI-Powered GitHub Issue Fixer
 > Build intelligent, automated code-maintainers powered by OpenAI and GitHub.
 
 OpenFix.AI is an **AI-driven GitHub Issue Fixer** that automatically:
@@ -54,7 +54,7 @@ Perfect for open-source teams, solo developers, hackathons, and agent-based deve
 
 
 
-#  Setup Instructions
+# Setup Instructions
 
 ## 1. Clone Repo
 
@@ -68,7 +68,7 @@ cd openfix-ai
 ## 2. Install Dependencies
 
 ```bash
-npm install
+pnpm install
 ```
 
 ---
@@ -86,7 +86,8 @@ GITHUB_CLIENT_SECRET=your_client_secret
 
 DATABASE_URL=postgresql://<user>:<password>@<host>/<db>
 
-OPENAI_API_KEY=your_openai_api_key
+GROQ_API_KEY=your_groq_api_key
+GITHUB_PERSONAL_TOKEN=your_github_pat_for_pr_creation_optional
 
 ```
 
@@ -95,8 +96,8 @@ OPENAI_API_KEY=your_openai_api_key
 ## 4. Setup Prisma
 
 ```bash
-npx prisma migrate dev
-npx prisma generate
+pnpm db:migrate
+pnpm db:generate
 ```
 
 ---
@@ -104,8 +105,43 @@ npx prisma generate
 ## 5. Run Dev Server
 
 ```bash
-npm run dev
+pnpm dev
 ```
+
+## Docker
+
+Build and run the full stack with Docker Compose:
+
+```bash
+cp .env.docker.example .env.docker
+docker compose --env-file .env.docker up --build
+```
+
+This starts:
+
+- `app` on `http://localhost:3000`
+- `db` on `localhost:5432`
+
+The app container runs `prisma migrate deploy` on startup before launching Next.js.
+
+## GitHub Actions
+
+Two workflows are included:
+
+- `CI`: installs dependencies, generates Prisma client, type-checks, and builds on pushes and pull requests
+- `CD`: builds the production Docker image and publishes it to GitHub Container Registry (`ghcr.io`) on pushes to `main` and version tags
+
+Set these repository secrets before enabling the workflows:
+
+- `DATABASE_URL`
+- `NEXTAUTH_URL`
+- `NEXTAUTH_SECRET`
+- `GITHUB_CLIENT_ID`
+- `GITHUB_CLIENT_SECRET`
+- `GROQ_API_KEY`
+- `GITHUB_PERSONAL_TOKEN` (only if PR creation is used)
+
+The CD workflow uses the built-in `GITHUB_TOKEN` to publish images to GHCR.
 
 ---
 
@@ -178,4 +214,3 @@ Dashboard displays:
 | **Tailwind CSS** | Styling                                |
 | **TypeScript**   | Type safety                            |
 | **GitHub API**   | Repo, Issues, PR automation            |
-
